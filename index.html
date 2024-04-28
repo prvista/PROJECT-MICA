@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MICA</title>
+    <link rel="stylesheet" href="dist/scss/main.css" />
+    <link rel="stylesheet" href="./scss/main.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="dist/components/img/mica.png" />
+    <script
+      src="https://kit.fontawesome.com/29865ec48b.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <section class="prompt">
+      <div class="mica__heading">
+        <div class="container">
+          <div class="mica__heading__wrapper">
+            <img src="./dist/components/img/MICA_HALF.png" alt="" />
+          </div>
+        </div>
+      </div>
+
+      <div id="chat-container" class="chat-container">
+        <!-- Messages will be appended here -->
+      </div>
+
+      <div id="input-container" class="input__container">
+        <div class="container">
+          <div class="input__container__wrapper">
+            <input
+              class="input_prompt"
+              type="text"
+              id="user-input"
+              placeholder="Message MICA..."
+            />
+            
+            <button class="btn__prompt" onclick="sendMessage()">
+              <i class="fa-regular fa-paper-plane"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
