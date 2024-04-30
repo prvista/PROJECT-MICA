@@ -1,4 +1,7 @@
 function sendMessage() {
+  var sound = document.getElementById("messageSound");
+  sound.play();
+
   var userInput = document.getElementById("user-input").value.trim();
   if (userInput !== "") {
     appendMessage("user", userInput);
@@ -44,6 +47,7 @@ function fetchResponse(message) {
   xhr.send(JSON.stringify({ message: message }));
 }
 
+
 // Function to append bot message to chat container
 function appendBotMessage(message, chathead) {
   var chatContainer = document.getElementById("chat-container");
@@ -67,3 +71,23 @@ function appendBotMessage(message, chathead) {
   chatContainer.appendChild(messageContainer);
   chatContainer.scrollTop = chatContainer.scrollHeight;
 }
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  const texts = ["Your health, our priority.", "Healthcare made easy, chat with us!", "Wellness at your fingertips.","Medical Information Chat Assistant"];
+  let index = 0;
+  const changingTextElement = document.getElementById("changingText");
+
+  function changeText() {
+    changingTextElement.textContent = texts[index];
+    index = (index + 1) % texts.length
+  }
+
+  // Call the function initially and every 2 seconds thereafter
+  setInterval(changeText, 4000); // Call every 2 seconds
+});

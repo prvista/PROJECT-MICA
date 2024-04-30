@@ -16,6 +16,9 @@ dataset = [
     (["Hello"], "Hi! How can I help you?")
 ]
 
+# Define a fallback response for unmatched queries
+fallback_response = "I'm sorry, I'm not trained to answer that question."
+
 class RequestHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         if self.path == '/':
@@ -62,12 +65,35 @@ class RequestHandler(BaseHTTPRequestHandler):
         # Include the chathead image in the JSON response
         chathead_image = 'MICA_chathead4.png'  # Path to the chathead image
         response_data = {
-            'response': '' + response,
+            'response': response,
             'chathead': chathead_image
         }
         self.wfile.write(json.dumps(response_data).encode())
 
 def generate_response(message):
+    # Initialize variables to track maximum score and corresponding response
+    max_score = 0
+    best_response = fallback_response
+    
+    # Iterate over the dataset to find the best matching response
+    for keywords, response in dataset:
+        # Calculate the similarity score for each keyword in the keyword set
+        keyword_scores = [SequenceMatcher(None, message.lower(), keyword.lower()).ratio() for keyword in keywords]
+        
+        # Calculate the average score for the keyword set
+        avg_score = sum(keyword_scores) / len(keywords)
+        
+        # If the average score is greater than the current maximum score, update the maximum score and response
+        if avg_score > max_score:
+            max_score = avg_score
+            best_response = response
+    
+    # If the maximum score is below a certain threshold, return the fallback response
+    if max_score < 0.6:  # Adjust this threshold as needed
+        return fallback_response
+    
+    return best_response
+
     # Calculate similarity score for each keyword set
     scores = {}
     for keywords, response in dataset:
@@ -76,8 +102,12 @@ def generate_response(message):
     
     # Select the response with the highest similarity score
     max_score = max(scores.keys())
-    response = scores[max_score]
     
+    # If the maximum score is below a certain threshold, return the fallback response
+    if max_score < 0.6:  # Adjust this threshold as needed
+        return fallback_response
+    
+    response = scores[max_score]
     return response
 
 def run(server_class=HTTPServer, handler_class=RequestHandler, port=8000):
