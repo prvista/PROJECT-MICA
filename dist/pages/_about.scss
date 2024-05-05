@@ -7,20 +7,21 @@
     font-style: normal;
     &__wrapper{
         display: flex;
-        flex-direction: row;
+        justify-content: center;
+        // flex-direction: row;
         gap: 1rem;
         align-items: center;
         // padding: 3rem 0;
-        padding-top: 6rem;
+        padding-top: 3rem;
 
 
-        .mica__wow{
-            &__wrapper{
-                img{
-                    width: 50rem;
-                }
-            }
-        }
+        // .mica__wow{
+        //     &__wrapper{
+        //         img{
+        //             width: 50rem;
+        //         }
+        //     }
+        // }
 
 
         .about__details{
@@ -34,6 +35,7 @@
                 }
                 h3{
                     font-size: 1.6rem;
+                    color: #bcbcbc;
                 }
 
                 .button__tryMica{
@@ -56,11 +58,10 @@
                             }
 
                             &:hover{
-                                padding: 1.1rem 2.1rem;
+                                // padding: 1.1rem 2.1rem;
                                 transition: 0.3s ease;
                                 background: #0073ee;
-                                font-size: 1.5rem;
-
+                                // font-size: 1.5rem;
                             }
                         }
                     }
@@ -69,3 +70,35 @@
         }
     }
 }
+
+
+
+
+.banner__mica {
+    background-image: url(../components/img/MICA-BG.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 1rem;
+    width: 100%; 
+    max-width: 600px; 
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    margin-top: 2rem;
+  
+    &__wrapper {
+      padding: 20px; 
+    }
+  
+    &__text {
+      color: white;
+      font-size: 5rem;
+  
+      &__wrapper {
+        text-align: center;
+      }
+    }
+  }
+  

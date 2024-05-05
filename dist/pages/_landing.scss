@@ -1,220 +1,180 @@
 .prompt {
-    // background: rgb(0, 0, 43);
-    // background: #000014;
-
-    // background: white;
-
-    background: #000014;
-    height: 89vh;
-  }
-  
-  .mica__heading {
-    &__wrapper {
-      display: flex;
-      margin: 0 auto;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: -1.3rem;
-  
-      img {
-        width: 12rem;
-      }
-    }
-  }
-
-  .dark{
-    background: #000;
-    background-color: #000;
-  }
-  
-  $input-width: calc(100% - 393px);
-  
-  #chat-container {
-    width: 100%;
-    max-width: 900px;
-    height: 400px;
-    border: 1px solid #7e7e7e;
-    overflow-y: auto;
-    padding: 10px;
-    margin: 0 auto;
-    border-radius: 1rem;
-    background: #fff;
-  }
-  
-  .message-container {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .user-message {
-    align-self: flex-end;
-    background-color: #007bff;
-    color: #fff;
-    border-radius: 10px;
-    padding: 5px 10px;
-    margin-bottom: 10px;
-    max-width: 70%; // Adjust as needed
-  }
-  
-  .mica-message {
-    align-self: flex-start;
-    background-color: #f0f0f0;
-    color: #000;
-    border-radius: 10px;
-    padding: 5px 10px;
-    margin-bottom: 10px;
-    max-width: 70%; // Adjust as needed
-  }
-  
-  #input-container {
-    margin-top: 10px;
-  }
-  
-  .input__container {
-    display: flex;
-  
-    &__wrapper {
-      justify-content: center;
-      margin: 0 auto;
-      text-align: center;
-  
-      input[type="text"] {
-        width: $input-width;
-        padding: 15px;
-        margin-bottom: 10px;
-        border-radius: 2rem;
-        transition: 0.3s ease;
-        background: #f0f0f0;
-
-        &:hover{
-            border-color: #007bff;
-            transition: 0.3s ease;
-        }
-      }
-  
-      .btn__prompt {
-        border: none;
-        cursor: pointer;
-        background:none;
-        align-items: center;
-        
-        i{
-            // color: #fff;
-            // background-color: rgb(59 130 246 / var(--tw-bg-opacity));
-            color: #c1c1c1;
-            font-size: 2.5rem;
-            transition: 0.3s ease;
-            // margin-bottom: -2rem;
-
-            &:hover{
-                color: #007bff;
-                transition: 0.3s ease;
-            }
-        }
-        &:hover {
-          color: #000;
-        }
-      }
-    }
-  }
-  
-  // New styles for profile picture and message
-  .profile-picture {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
-    border-radius: 50%;
+  background: #000014;
+  height: 89vh;
 }
 
-.bot-message {
-    color: rgb(255, 255, 255);
-    font-family: Arial, Helvetica, sans-serif;
+.mica__heading {
+  &__wrapper {
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: -1.3rem;
+
+    img {
+      width: 8rem;
+    }
+  }
+}
+
+.dark {
+  background: #000;
+  background-color: #000;
+}
+
+$input-width: calc(100% - 393px);
+
+#chat-container {
+  width: 100%;
+  max-width: 900px;
+  height: 470px;
+  border: 1px solid #7e7e7e;
+  overflow-y: auto;
+  padding: 10px;
+  margin: 0 auto;
+  border-radius: 1rem;
+  background: #fff;
 }
 
 .message-container {
-    display: flex;
-    align-items: flex-start; // Align items to the start (left)
-    margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
 
-
-    .profile-picture {
-        align-self: flex-start; // Align profile picture to the top
-        margin-right: 10px; // Adjust as needed
-        margin-bottom: 5px;
-    }
-
-    .bot-message {
-        background-color: #f0f0f0; // Bot message background color
-        color: #000; // Bot message text color
-        border-radius: 10px; // Bot message border radius
-        padding: 5px 10px; // Bot message padding
-        margin-bottom: 10px; // Bottom margin for bot message
-        max-width: calc(100% - 40px); // Maximum width for bot message
-    }
+  img{
+    width: 300px;
+  }
 }
 
+.user-message {
+  align-self: flex-end;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  max-width: 70%; // Adjust as needed
+}
 
+.bot-message {
+  background-color: #f0f0f0; // Bot message background color
+  color: #000; // Bot message text color
+  border-radius: 10px; // Bot message border radius
+  padding: 10px; // Bot message padding
+  margin-bottom: 10px; // Bottom margin for bot message
+  max-width: 70%; // Adjust as needed
+  position: relative; // Ensure position is relative for positioning the image
+}
 
+.bot-image {
+  display: block;
+  margin: 10px auto; // Center the image
+  max-width: 100%; // Ensure the image does not exceed the width of the message container
+  border-radius: 10px; // Apply border radius to the image
+}
 
+#input-container {
+  margin-top: -2px;
+}
 
+.input__container {
+  display: flex;
 
-.home__page__welcome{
+  &__wrapper {
+    justify-content: center;
+    margin: 0 auto;
+    text-align: center;
+
+    input[type="text"] {
+      width: $input-width;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 2rem;
+      transition: 0.3s ease;
+      background: #f0f0f0;
+
+      &:hover {
+        border-color: #007bff;
+        transition: 0.3s ease;
+      }
+    }
+
+    .btn__prompt {
+      border: none;
+      cursor: pointer;
+      background: none;
+      align-items: center;
+
+      i {
+        color: #c1c1c1;
+        font-size: 2.5rem;
+        transition: 0.3s ease;
+
+        &:hover {
+          color: #007bff;
+          transition: 0.3s ease;
+        }
+      }
+      &:hover {
+        color: #000;
+      }
+    }
+  }
+}
+
+// Ensure alignment of profile picture and message in the message container
+.message-container {
+  display: flex;
+  align-items: flex-start; // Align items to the start (left)
+  // margin-bottom: 10px;
+
+  .profile-picture {
+    align-self: flex-start; // Align profile picture to the top
+    margin-right: 10px; // Adjust as needed
+    margin-bottom: 5px; // Adjust as needed
+  }
+}
+
+.home__page__welcome {
   background: #000014;
 
-  // background: white;
-
-
-  &__wrapper{
-
-
-    .home__page__text{
+  &__wrapper {
+    .home__page__text {
       display: flex;
       flex-direction: row;
       font-family: 'Inter', sans-serif;
       font-style: normal;
 
-
-
-      &__wrapper{
+      &__wrapper {
         display: flex;
         justify-content: center;
         flex-direction: column;
         text-align: center;
         margin: 0 auto;
         gap: 3rem;
-        // padding: 10rem 0;
         padding-top: 15rem;
 
-        .home__title{
+        .home__title {
           color: #fff;
-          // color: #080808;
 
-          h1{
+          h1 {
             font-size: 6rem;
-
           }
         }
 
-        .home__navpage{
+        .home__navpage {
           display: flex;
           flex-direction: column;
-          // gap: 2rem;
 
-          
-          ul{
+          ul {
             display: flex;
-            // flex-direction: column;
-            // gap: 3.5rem;
-            li{
+            li {
               padding: 0 1rem;
               transition: 0.4s ease;
 
-
-              &:hover{
-                // transform: scale(1.02);
+              &:hover {
                 transition: 0.3s ease;
               }
-              a{
+              a {
                 color: white;
                 text-decoration: none;
                 background: #007bff;
@@ -223,10 +183,9 @@
                 font-weight: 800;
                 transition: 0.3s ease;
 
-
-                &:hover{
-                background: #006cdf;
-                transition: 0.3s ease;
+                &:hover {
+                  background: #006cdf;
+                  transition: 0.3s ease;
                 }
               }
             }
@@ -237,54 +196,60 @@
   }
 }
 
-.home__mica{
+.home__mica {
   display: flex;
   justify-content: center;
   margin: 0 auto;
   align-items: flex-end;
   height: 40.3vh;
   background: #000014;
-  // background: white;
 
-
-  // height: 32vh;
-  img{
+  img {
     width: 33rem;
+  }
+}
+
+@keyframes textDissolve {
+  0% {
+    opacity: 1;
+  }
+
+  25% {
+    opacity: 1;
+  }
+
+  75% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
   }
 }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-@keyframes textDissolve {
-  0% { opacity: 1; }
-  25% { opacity: 1; }
-  75% { opacity: 1; }
-  100% { opacity: 1; }
-}
-
 .changing-text {
   animation: textDissolve 14s linear infinite;
 }
 
-
-
-
-.height-limit{
-  // height: 80vh;
+.height-limit {
   background: #000014;
 }
 
-.margin-none{
+.margin-none {
   margin: 0;
+}
+
+
+.image-class {
+  width: 300px; /* Set the width to 300 pixels */
+  height: 100px; /* Maintain the aspect ratio */
+}
+
+
+
+img.generated-image {
+  width: 200px;
+  height: 100px;
 }

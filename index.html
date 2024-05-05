@@ -20,7 +20,6 @@
               <img src="./dist/components/img/MICA_logo_blue.png" alt="" />
             </div>
           </div>
-
           <a href="./home.html">
             <div class="homepage">
               <button class="btn__homepage" href="./home.html">
@@ -31,7 +30,6 @@
                     ></path>
                   </svg>
                 </div>
-
                 <div class="text">Home</div>
               </button>
             </div>
@@ -49,9 +47,7 @@
         </div>
       </div>
 
-      <div id="chat-container" class="chat-container">
-        <!-- Messages will be appended here -->
-      </div>
+      <div id="chat-container" class="chat-container"></div>
 
       <div id="input-container" class="input__container">
         <div class="container">
@@ -68,18 +64,18 @@
               onclick="sendMessage()"
               onmousedown="sound.play()"
             >
-              <i class="fa-regular fa-paper-plane"></i>
+              <i class="fas fa-paper-plane"></i>
             </button>
+
+            <audio id="messageSound">
+              <source src="message_sound.wav" type="audio/wav" />
+              Your browser does not support the audio element.
+            </audio>
           </div>
         </div>
       </div>
     </section>
 
     <script src="./script.js"></script>
-
-    <!-- <script>
-      var sound = new Audio();
-      sound.src = "sounds/message_sound.wav";
-    </script> -->
   </body>
 </html>
