@@ -20,6 +20,7 @@ function appendMessage(sender, message, imageUrl) {
   var messageContainer = document.createElement("div");
   var messageElement = document.createElement("div");
   var profilePicture = document.createElement("img"); // Create a new img element for the profile picture
+  var timeElement = document.createElement("div"); // Create a new div element for the time
 
   messageContainer.classList.add("message-container");
   messageElement.textContent = message;
@@ -34,26 +35,34 @@ function appendMessage(sender, message, imageUrl) {
     } else {
       messageContainer.appendChild(messageElement); // Append message only if no image
     }
+    // Add the current time below the bot's message
+    timeElement.textContent = getCurrentTime();
+    timeElement.classList.add("message-time");
+    messageContainer.appendChild(timeElement);
   } else {
     messageElement.classList.add("user-message");
     messageContainer.appendChild(messageElement);
+    // Add the profile picture below the user's message
+    profilePicture.src = "MICA_chathead4.png"; // Set the profile picture source
+    profilePicture.classList.add("profile-picture");
+    messageContainer.appendChild(profilePicture); // Append the profile picture
   }
 
   chatContainer.appendChild(messageContainer);
   chatContainer.scrollTop = chatContainer.scrollHeight;
+}
 
-  // Add the profile picture below the user's message
-  if (sender === "user") {
-    profilePicture.src = "MICA_chathead4.png"; // Set the profile picture source
-    profilePicture.classList.add("profile-picture");
-    messageContainer.appendChild(profilePicture); // Append the profile picture
-
-    // Position the profile picture to the right of the user's message
-    profilePicture.style.float = "right";
-    profilePicture.style.marginTop = "5px"; // Adjust margin as needed
-    profilePicture.style.width = "30px"; // Set the width of the profile picture
-    profilePicture.style.height = "30px"; // Set the height of the profile picture
-  }
+// Function to get the current time
+function getCurrentTime() {
+  var now = new Date();
+  var hours = now.getHours();
+  var minutes = now.getMinutes();
+  var ampm = hours >= 12 ? "PM" : "AM";
+  hours = hours % 12;
+  hours = hours ? hours : 12; // Handle midnight
+  minutes = minutes < 10 ? "0" + minutes : minutes; // Add leading zero to minutes
+  var timeString = hours + ":" + minutes + " " + ampm;
+  return timeString;
 }
 
 
@@ -90,13 +99,13 @@ function appendBotMessage(message, imageUrl) {
 
 
 document.addEventListener("DOMContentLoaded", function() {
-  const texts = ["Your health, our priority.", "Healthcare made easy, chat with us!", "Wellness at your fingertips.","Medical Information Chat Assistant"];
+  const texts = ["Your health, our priority.", "Healthcare made easy, chat with us!", "Wellness at your fingertips.", "Medical Information Chat Assistant"];
   let index = 0;
   const changingTextElement = document.getElementById("changingText");
 
   function changeText() {
     changingTextElement.textContent = texts[index];
-    index = (index + 1) % texts.length
+    index = (index + 1) % texts.length;
   }
 
   function handleKeyPress(event) {
@@ -105,10 +114,23 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   }
 
+  function handlePromptClick(prompt) {
+    document.getElementById("user-input").value = prompt;
+    sendMessage(); // Automatically send the message when a prompt is clicked
+  }
+
   // Add event listener to input field
   var userInput = document.getElementById("user-input");
   userInput.addEventListener("keypress", handleKeyPress);
 
+  // Add event listener to prompt items
+  var promptItems = document.getElementsByClassName("prompt-item");
+  for (var i = 0; i < promptItems.length; i++) {
+    promptItems[i].addEventListener("click", function() {
+      handlePromptClick(this.textContent);
+    });
+  }
+
   // Call the function initially and every 2 seconds thereafter
-  setInterval(changeText, 4000); // Call every 2 seconds
+  setInterval(changeText, 4000); // Call every 4 seconds
 });
