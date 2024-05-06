@@ -6,7 +6,7 @@ def text_to_speech(text):
     engine.runAndWait()
 
 # Example usage:
-# text_to_speech("Welcome to MICA!")
+text_to_speech("Welcome to MICA!")
 
 
 
