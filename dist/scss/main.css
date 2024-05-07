@@ -216,6 +216,20 @@ body {
   transition: 0.3s ease;
 }
 
+#mic-button {
+  background: transparent;
+  border: none;
+}
+#mic-button i {
+  color: #c1c1c1;
+  transition: 0.3s ease;
+  font-size: 2.5rem;
+}
+#mic-button i:hover {
+  color: #007bff;
+  transition: 0.3s ease;
+}
+
 .home__mica {
   display: flex;
   justify-content: center;

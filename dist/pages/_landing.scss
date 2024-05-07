@@ -197,6 +197,32 @@ $input-width: calc(100% - 393px);
   }
 }
 
+
+
+
+#mic-button{
+  background: transparent;
+  border: none;
+
+  i{
+    color: #c1c1c1;
+    transition: 0.3s ease;
+    font-size: 2.5rem;
+
+
+    &:hover{
+      color: #007bff;
+      transition: 0.3s ease;
+
+    }
+  }
+}
+
+
+
+
+
+
 .home__mica {
   display: flex;
   justify-content: center;
@@ -264,6 +290,9 @@ img.generated-image {
   margin-bottom: 5px;
   // margin-top: 5px; /* Adjust margin-top to create space between message and time */
 }
+
+
+
 
 
 

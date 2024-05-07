@@ -15,12 +15,48 @@ function sendMessage() {
 
 
 
+
+
+function startSpeechRecognition() {
+  var recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
+  recognition.lang = 'en-US';
+
+  recognition.onstart = function() {
+    console.log('Speech recognition started...');
+  };
+
+  recognition.onresult = function(event) {
+    var transcript = event.results[0][0].transcript;
+    console.log('Transcript:', transcript);
+    appendMessage("user", transcript);
+    fetchResponse(transcript);
+  };
+
+  recognition.onerror = function(event) {
+    console.error('Speech recognition error:', event.error);
+  };
+
+  recognition.onend = function() {
+    console.log('Speech recognition ended.');
+  };
+
+  recognition.start();
+}
+
+
+
+
+
+
+
+
+
 function appendMessage(sender, message, imageUrl) {
   var chatContainer = document.getElementById("chat-container");
   var messageContainer = document.createElement("div");
   var messageElement = document.createElement("div");
-  var profilePicture = document.createElement("img"); // Create a new img element for the profile picture
-  var timeElement = document.createElement("div"); // Create a new div element for the time
+  var profilePicture = document.createElement("img"); 
+  var timeElement = document.createElement("div")
 
   messageContainer.classList.add("message-container");
   messageElement.textContent = message;
@@ -31,9 +67,9 @@ function appendMessage(sender, message, imageUrl) {
       var image = document.createElement("img");
       image.src = imageUrl;
       messageContainer.appendChild(messageElement);
-      messageContainer.appendChild(image); // Appending image below the message
+      messageContainer.appendChild(image); 
     } else {
-      messageContainer.appendChild(messageElement); // Append message only if no image
+      messageContainer.appendChild(messageElement); 
     }
     // Add the current time below the bot's message
     timeElement.textContent = getCurrentTime();
@@ -45,12 +81,19 @@ function appendMessage(sender, message, imageUrl) {
     // Add the profile picture below the user's message
     profilePicture.src = "MICA_chathead4.png"; // Set the profile picture source
     profilePicture.classList.add("profile-picture");
-    messageContainer.appendChild(profilePicture); // Append the profile picture
+    messageContainer.appendChild(profilePicture); 
   }
 
   chatContainer.appendChild(messageContainer);
   chatContainer.scrollTop = chatContainer.scrollHeight;
 }
+
+
+
+
+
+
+
 
 // Function to get the current time
 function getCurrentTime() {
@@ -71,7 +114,6 @@ function getCurrentTime() {
 
 
 
-
 function fetchResponse(message) {
   var xhr = new XMLHttpRequest();
   xhr.open("POST", "/get_response", true);
@@ -80,14 +122,11 @@ function fetchResponse(message) {
     if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
       var data = JSON.parse(xhr.responseText);
       appendBotMessage(data.response, data.image);
+      speakBotMessage(data.response); // Speak the bot's message
     }
   };
   xhr.send(JSON.stringify({ message: message }));
 }
-
-
-
-
 
 function appendBotMessage(message, imageUrl) {
   appendMessage("bot", message, imageUrl);
@@ -95,6 +134,15 @@ function appendBotMessage(message, imageUrl) {
 
 
 
+
+
+function speakBotMessage(message) {
+  // Remove emoji from the message
+  var textOnlyMessage = message.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, '');
+
+  var speech = new SpeechSynthesisUtterance(textOnlyMessage);
+  speechSynthesis.speak(speech);
+}
 
 
 
@@ -108,17 +156,29 @@ document.addEventListener("DOMContentLoaded", function() {
     index = (index + 1) % texts.length;
   }
 
+
+
+
+
+
+
   function handleKeyPress(event) {
     if (event.key === "Enter") {
       sendMessage(); // Call sendMessage function when Enter key is pressed
     }
   }
 
+
+
+
+
+
+
   function handlePromptClick(prompt) {
     document.getElementById("user-input").value = prompt;
-    sendMessage(); // Automatically send the message when a prompt is clicked
+    sendMessage(); 
   }
-
+  
   // Add event listener to input field
   var userInput = document.getElementById("user-input");
   userInput.addEventListener("keypress", handleKeyPress);
@@ -131,6 +191,11 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 
-  // Call the function initially and every 2 seconds thereafter
+  // Add event listener to microphone button
+  var micButton = document.getElementById("mic-button");
+  micButton.addEventListener("click", function() {
+    startSpeechRecognition(); 
+  });
+
   setInterval(changeText, 4000); // Call every 4 seconds
 });
