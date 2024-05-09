@@ -10,17 +10,13 @@ dataset = [
     (["hospital", "nearest hospital"], "You can search for nearby hospitals using online maps or call emergency services for assistance. The nearest hospital in your location is Doctors Hospital.", "z-img/spc-doctors.jpg"),
     (["COVID-19", "symptoms of COVID-19"], "Common symptoms include fever, cough, and difficulty breathing. If you suspect you have COVID-19, seek medical advice immediately.", None),
     (["common cold", "prevent the common cold"], "Wash your hands frequently, avoid close contact with sick individuals, and maintain a healthy lifestyle with a balanced diet and regular exercise.", None),
-    (["asthma", "prevent the asthma"], "tite", None),
+    (["asthma", "prevent the asthma"], "haaay", None),
     (["sprained ankle", "ice for a sprained ankle"], "Apply ice to the affected area and elevate it to reduce swelling. Rest and avoid putting weight on the ankle.", "z-img/sprained-ankle.jpg"),
     (["prevent COVID-19", "prevention measures for COVID-19"], "To prevent COVID-19, practice good hygiene by washing your hands frequently, wearing masks in public places, practicing social distancing, and getting vaccinated when available.", None),
     (["updates COVID-19", "status or update for COVID-19"], "For the latest updates on COVID-19, refer to reliable sources such as the World Health Organization (WHO) or your local health department.", None),
     (["What is MICA?"], "I am MICA or Medical Information Chat Assistant. I assist users with healthcare-related inquiries and provide valuable information and assistance.", "MICA-dila.png"),
     (["Hi"], "Hello! How can I help you?👋", "z-img/MICA_hello.png"),
-    (["Hello"], "Hi! How can I help you?👋", "z-img/MICA_hello.png"),
-    
-    
-    
-    
+    (["Hello"], "Hello! How can I help you?👋", "z-img/MICA_hello.png"),
 ]
 
 fallback_response = "I'm sorry, I'm not trained to answer that question."
@@ -50,6 +46,7 @@ def generate_response(message):
                 break
     
     return best_response, best_image
+
 
 
 

@@ -13,10 +13,6 @@ function sendMessage() {
 
 
 
-
-
-
-
 function startSpeechRecognition() {
   var recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
   recognition.lang = 'en-US';
@@ -146,15 +142,6 @@ function speakBotMessage(message) {
 
 
 
-document.addEventListener("DOMContentLoaded", function() {
-  const texts = ["Your health, our priority.", "Healthcare made easy, chat with us!", "Wellness at your fingertips.", "Medical Information Chat Assistant"];
-  let index = 0;
-  const changingTextElement = document.getElementById("changingText");
-
-  function changeText() {
-    changingTextElement.textContent = texts[index];
-    index = (index + 1) % texts.length;
-  }
 
 
 
@@ -198,4 +185,22 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
   setInterval(changeText, 4000); // Call every 4 seconds
-});
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  

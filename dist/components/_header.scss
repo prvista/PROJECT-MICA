@@ -1,50 +1,230 @@
 .header{
-    // background: rgb(0, 0, 43);
-    // background: rgb(0, 0, 43);
-  // background: #080808;
-
   background: #000014;
-  // background: white;
+  position: fixed;
+  width: 100%;
+  font-family: 'Inter', sans-serif;
 
+
+  &__wrapper{
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+  }
+
+  &__nav{
+  background: #000000;
+  position: absolute;
+  right: -100rem;
+  top: 1rem;
+  height: 100vh;
+  width: 100%;
+  transition: right 0.5s ease; 
+  padding: 2.4rem;
+  
+
+  ul{
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+
+      
+      li{
+        
+        &:hover{
+          a{
+            color: rgb(159, 159, 159);    
+            transition: 0.2s ease;
+          }
+        }
+        a{
+          color: white;
+          font-size: 2.7rem;
+          font-weight: 600;
+          text-decoration: none;
+          font-family: 'Inter', sans-serif;
+          transition: 0.2s ease;
+        }
+      }
+    }
+   span{
+    width: 1.6rem;
+    height: 0.2rem;
+    background: white;
+    display: inline-block;
+   }
+  }
+
+  &__nav.open{
+    right: 0;
+    background: #000014;
+  }
+
+  .burger__btn{
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+
+    &:hover{
+      cursor: pointer;
+    }
+
+    span{
+      width: 2.3rem;
+      height: 0.3rem;
+      background: white;
+      display: block;
+      transition: 0.2s ease;
+      border-radius: 5rem;
+    }
+
+    &.open{
+      span{
+        &:first-child{
+          transform: translate(0, 7px) rotate(45deg);
+        }
+        &:last-child{
+          transform: translate(0, -5px) rotate(-45deg);
+        }
+        &:nth-child(2){
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  .branding{
+    img{
+      width: 15rem;
+    }
+  }
+
+  .logo__bottom{
+    img{
+      width: 7rem;
+      display: flex;
+      padding-top: 35rem;
+    }
+  }
+}
+
+
+
+
+
+
+
+@media screen and (min-width: 700px){
+  .header{
+    background: #000014;
+    position: relative;
+    padding: 0;   
 
     &__wrapper{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        .branding{
-            &__wrapper{
-                img{
-                    width: 15rem;
-                }
-            }
-        }
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     &__nav{
-        ul{
-            display: flex;
-            flex-direction: row;
-            gap: 3.2rem;
-            li{
-                a{
-                    color: white;
-                    // color: #080808;
+    background: #000014;
+    position: relative;
+    right: unset;
+    top: unset;
+    height: unset;
+    width: unset;
+    padding: unset;
+    transition: none; 
+    z-index: 1000;
 
-                    text-decoration: none;
-                    font-size: 1.7rem;
-                    font-weight: 500;
-                    transition: 0.2s ease;
+    ul{
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+    flex-direction: row;
 
-                    &:hover{
-                        color: rgb(159, 159, 159);
-                        transition: 0.2s ease;
-                    }
-                }
-            }
+    li{
+      flex-direction: column;
+      font-family: 'Inter', sans-serif;
+      text-decoration: none;
+      a{
+        color: white;
+        font-size: 1.7rem;
+        font-weight: 500;
+
+        &:hover{
+        color: rgb(159, 159, 159);
+          
         }
+      }
+
+      span{
+        display: none;
+      }
     }
+    }
+    }
+
+    .dent{
+      display: unset;
+      color: white;
+    }
+
+    .branding{
+      width: 11rem;
+    }
+
+    .burger__btn{
+      display: none;
+
+      &:hover{
+        cursor: pointer;
+      }
+      span{
+      display: none;
+      }
+    }
+
+    .logo__bottom{
+      display: none;
+    }
+  }
 }
+
+
+
+@media screen and (max-width: 700px){
+  .home__mica{
+    height: 31.3vh;
+    img{
+      width: 40rem;
+    }
+  }
+}
+
+
+
+
+.relative{
+  position: relative;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -106,7 +286,7 @@
     //   background: linear-gradient(to right, #3498db, #e74c3c);
     // background: rgb(0, 0, 136);
     // background: #35b3e0;
-    background-color: #1c81ec;
+    color: #007bff;
 
 
       
@@ -129,4 +309,15 @@
       box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
     }
   }
+
   
+
+
+  @media screen and (max-width: 1600px){
+    .burger__btn{
+      display: none;
+      span{
+      display: none;
+      }
+    }
+  }
