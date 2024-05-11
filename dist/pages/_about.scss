@@ -117,3 +117,85 @@
         }
       }
   }
+
+
+
+
+
+
+
+
+
+
+  .prompt__side-panel {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 242px; 
+    padding: 14px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    z-index: 1001; 
+    background: #000014;
+    border-right: 1px solid #ccc;
+
+    display: flex;
+    flex-direction: column;
+  
+    .panel__img{
+      &__wrapper{
+        img{
+          width: 15rem;
+        }
+      }
+    }
+    .prompt-list {
+      list-style: none;
+      padding: 0;
+      margin-top: 50px;
+      font-size: 2rem;
+    }
+  
+    .prompt-item {
+      padding: 10px 0;
+      border-bottom: 1px solid #ccc; 
+  
+      &:last-child {
+        border-bottom: none;
+      }
+      
+      a {
+        text-decoration: none;
+        color: white;
+      }
+  
+      &.active {
+        background-color: #ddd; 
+      }
+    }
+  
+    @media screen and (max-width: 1500px) {
+      display: none;
+    }
+  }
+  
+
+
+.branding-prompt{
+  &__wrapper{
+    img{
+      width: 11rem;
+    }
+  }
+}
+
+
+@media screen and (max-width:1500px){
+  .branding-prompt{
+    &__wrapper{
+      img{
+        width: 14rem;
+      }
+    }
+  }
+}

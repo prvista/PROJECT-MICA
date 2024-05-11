@@ -28,7 +28,8 @@ $input-width: calc(100% - 393px);
   width: 100%;
   max-width: 900px;
   height: 470px;
-  border: 1px solid #7e7e7e;
+  // border: 1px solid #7e7e7e;
+  border: 3px solid #002769;
   overflow-y: auto;
   padding: 10px;
   margin: 0 auto;
@@ -86,11 +87,11 @@ $input-width: calc(100% - 393px);
 
     input[type="text"] {
       // width: $input-width;
-      min-width: 68%;
+      min-width: 67%;
       // width: 85rem;
       padding: 15px;
       margin-bottom: 10px;
-      border-radius: 2rem;
+      border-radius: 3rem;
       transition: 0.3s ease;
       background: #f0f0f0;
 
@@ -105,14 +106,15 @@ $input-width: calc(100% - 393px);
       cursor: pointer;
       background: none;
       align-items: center;
+      color: #258eff;
+
 
       i {
-        color: #c1c1c1;
         font-size: 2.5rem;
         transition: 0.3s ease;
 
         &:hover {
-          color: #007bff;
+          color: #c1c1c1;
           transition: 0.3s ease;
         }
       }
@@ -157,27 +159,7 @@ $input-width: calc(100% - 393px);
           transition: 0.3s ease;
         }
       }
-  
-      .btn__prompt {
-        border: none;
-        cursor: pointer;
-        background: none;
-        align-items: center;
-  
-        i {
-          color: #c1c1c1;
-          font-size: 2.5rem;
-          transition: 0.3s ease;
-  
-          &:hover {
-            color: #007bff;
-            transition: 0.3s ease;
-          }
-        }
-        &:hover {
-          color: #000;
-        }
-      }
+
     }
   }
 }
@@ -322,13 +304,14 @@ $input-width: calc(100% - 393px);
   border: none;
 
   i{
-    color: #c1c1c1;
+    color: #258eff;
     transition: 0.3s ease;
     font-size: 2.5rem;
+    cursor: pointer;
 
 
     &:hover{
-      color: #007bff;
+      color: #c1c1c1;
       transition: 0.3s ease;
 
     }
@@ -443,6 +426,7 @@ img.generated-image {
 
   p {
     margin-left: 0.2rem;
+    font-size: 1.5rem;
   }
 
   &:hover {
@@ -474,7 +458,7 @@ img.generated-image {
 .prompt-bubble {
   position: fixed;
   top: 180px;
-  right: -70%; 
+  right: -90%; 
   width: auto;
   height: 40rem; 
   background-color: #ffffff;
@@ -486,6 +470,10 @@ img.generated-image {
   transition: right 0.4s ease-in-out; 
   overflow-y: auto; 
   max-height: calc(100% - 40px);
+
+  color: white;
+  background: #000a18;
+
 }
 
 .prompt-list {
@@ -500,7 +488,11 @@ img.generated-image {
 }
 
 .prompt-item:hover {
-  background-color: #f0f0f0;
+  // background-color: #f0f0f0;
+  // background: #424449;
+  // background: #0c192b;
+  background: #161d26;
+
 }
 
 .prompt-bubble.active {
