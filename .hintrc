@@ -8,6 +8,8 @@
       {
         "button-name": "off"
       }
-    ]
+    ],
+    "axe/forms": "off",
+    "axe/parsing": "off"
   }
 }
