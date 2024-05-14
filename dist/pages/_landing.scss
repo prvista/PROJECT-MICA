@@ -107,6 +107,7 @@ $input-width: calc(100% - 393px);
       background: none;
       align-items: center;
       color: #258eff;
+      
 
 
       i {
@@ -175,16 +176,14 @@ $input-width: calc(100% - 393px);
 
 
 
-// Ensure alignment of profile picture and message in the message container
 .message-container {
   display: flex;
-  align-items: flex-start; // Align items to the start (left)
-  // margin-bottom: 10px;
+  align-items: flex-start; 
 
   .profile-picture {
-    align-self: flex-start; // Align profile picture to the top
-    margin-right: 10px; // Adjust as needed
-    margin-bottom: 5px; // Adjust as needed
+    align-self: flex-start; 
+    margin-right: 10px; 
+    margin-bottom: 5px; 
     width: 35px;
   }
 }
@@ -383,8 +382,8 @@ $input-width: calc(100% - 393px);
 
 
 .image-class {
-  width: 300px; /* Set the width to 300 pixels */
-  height: 100px; /* Maintain the aspect ratio */
+  width: 300px; 
+  height: 100px; 
 }
 
 
@@ -409,6 +408,7 @@ img.generated-image {
 
 
 
+
 .prompt-button {
   position: fixed;
   top: 122px;
@@ -424,6 +424,7 @@ img.generated-image {
   transition: 0.3s ease;
   display: flex;
   align-items: center;
+  font-size: 1.6rem;
 
   p {
     margin-left: 0.2rem;
@@ -438,13 +439,14 @@ img.generated-image {
   &:active {
     margin-top: 0.5rem;
     transition: 0.3s ease;
-  }
+  } 
 
   @media screen and (max-width: 710px) {
     top: 590px;
     // right: 18px;
     font-size: 1.5rem;
     padding: 8px;
+    transition: 0.5s ease;
 
     p {
       display: none;
@@ -458,7 +460,7 @@ img.generated-image {
 
 .prompt-bubble {
   position: fixed;
-  top: 180px;
+  top: 165px;
   right: -90%; 
   width: auto;
   height: 40rem; 
@@ -472,12 +474,16 @@ img.generated-image {
   transition: right 0.4s ease-in-out; 
   overflow-y: auto; 
   max-height: calc(100% - 40px);
-
+  z-index: 99;
   color: white;
   background: #000a18;
+  transition: 0.3s ease;
 
 
-  
+  @media screen and (max-width: 1500px){
+    top: 212px;
+    transition: 0.3s ease;
+  }
 
 }
 
@@ -501,8 +507,115 @@ img.generated-image {
 }
 
 .prompt-bubble.active {
-  right: 20px; 
+  right: 2px;
 }
+
+
+
+
+
+
+
+.medicine-recommendation {
+  position: fixed;
+  bottom: 253px;
+  // left: -242px;
+  width: 242px;
+  background: #000014;
+  border: 1px solid #00438a;
+  border-left: unset;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1100;
+  color: white;
+  transition: left 0.3s ease;
+  
+
+  h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  #medicine-recommendation-content {
+    padding: 0;
+    margin: 0;
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        padding: 5px 0;
+      }
+    }
+  }
+
+  &.active {
+    left: 0;
+  }
+
+  @media screen and (max-width: 1500px) {
+    left: -242px;
+  }
+}
+
+.reco-button {
+  display: none;
+  position: fixed;
+  // bottom: 20px;
+  top: 163px;
+  right: 10px;
+  color: white;
+  cursor: pointer;
+  font-size: 1.4rem;
+  background-color: #1c81ec;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 20px;
+  z-index: 2100;
+  transition: 0.3s ease;
+  margin-top: 2px;
+
+
+  &:hover{
+    transition: 0.3s ease;
+    background: #006cdf;
+  }
+
+  &:active{
+    margin-top: 0.5rem;
+    transition: 0.3s ease;
+  }
+
+  @media screen and (max-width: 1500px) {
+    display: block;
+    transition: 0.3s ease;
+  }
+
+  @media screen and (max-width: 1046px){
+    top: 120px;
+    right: 7rem;
+    transition: 0.3s ease;
+  }
+
+  @media screen and (max-width: 710px){
+    top: 554px;
+    right: 9px;
+    font-size: 1.5rem;
+    padding: 6px 8px;
+    transition: 0.5s ease;
+
+  }
+}
+
+
+
+
+
+
+
 
 
 
