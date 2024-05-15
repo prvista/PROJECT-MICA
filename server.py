@@ -20,12 +20,9 @@ dataset = [
     (["Hi"], "Hello! How can I help you?👋", "z-img/MICA_hello.png", [""]),
     (["Hello"], "Hello! How can I help you?👋", "z-img/MICA_hello.png", [""]),
     
-    
-    
-    
     #Headache
-    (["prevent headache", "headache prevent", "prevention for headache", "headache prevention"], "To prevent headaches, ensure you stay hydrated, maintain a healthy diet, get regular exercise, manage stress, and practice good posture. ", "z-img/biogesic.jpg", ["Ibuprofen", "Acetaminophen"]),
-    (["treat headache", "headache treat", "treatment for headache", "headache treatment"], "To treat a headache, you can try over-the-counter pain relievers like ibuprofen or biogesic, rest in a quiet and dark room, apply a cold compress to your forehead, and practice relaxation techniques such as deep breathing or meditation.", "z-img/biogesic.jpg", ["Ibuprofen", "Acetaminophen"]),
+    (["prevent headache", "headache prevent", "prevention for headache", "headache prevention"], "To prevent headaches, ensure you stay hydrated, maintain a healthy diet, get regular exercise, manage stress, and practice good posture. ", "z-img/biogesic.jpg", ["Ibuprofen", "Acetaminophen", "Biogesic"]),
+    (["treat headache", "headache treat", "treatment for headache", "headache treatment"], "To treat a headache, you can try over-the-counter pain relievers like ibuprofen or biogesic, rest in a quiet and dark room, apply a cold compress to your forehead, and practice relaxation techniques such as deep breathing or meditation.", "z-img/biogesic.jpg", ["Ibuprofen", "Acetaminophen","Biogesic"]),
     
     (["burns prevent", "prevent burns", "prevention for burns", "burn prevention"], "Always use caution when handling hot objects or liquids. Keep hot objects out of reach of children. Install smoke alarms and have a fire extinguisher at home. Treat minor burns with cool running water and cover with a clean, dry cloth.", "z-img/prevent/prevent-burn.gif", []),
     (["burns treat", "treat burns", "treatment for burns", "burns treatment"], "For minor burns, run cool water over the affected area for at least 20 minutes. Do not apply ice. For severe burns, seek medical help immediately.",  "z-img/prevent/treat-burns.jpg", []),
@@ -45,8 +42,8 @@ dataset = [
     (["bruises prevent", "prevent bruises", "prevention for bruises", "bruise prevention"], "Take precautions to prevent falls. Use padding or cushions on sharp corners or edges. Avoid activities with a high risk of injury.", "z-img/prevent/prevent-bruse.jpg", ["Antibiotic Ointment (Bacitracin)"]),
     (["bruises treat", "treat bruises", "treatment for bruises", "bruises treatment"], "Apply a cold compress to reduce swelling. Elevate the affected area. If the bruise is accompanied by severe pain or swelling, seek medical help.", "z-img/prevent/treat-bruse.jpg", ["Antibiotic Ointment (Bacitracin)"]),
     # Nosebleeds
-    (["nosebleed prevent", "prevent nosebleed", "prevention for nosebleed", "nosebleed prevention"], "Avoid picking your nose or blowing it too hard. Use a humidifier to keep the air moist. Apply a thin layer of petroleum jelly like Vaseline inside your nostrils.", "z-img/prevent/prevent-nosebleed.png", ["Vicks Sinex"]),
-    (["nosebleed treat", "treat nosebleed", "treatment for nosebleed", "nosebleed treatment"], "Lean forward slightly and pinch your nostrils together. Apply ice to the bridge of your nose. Seek medical help if the bleeding persists for more than 20 minutes.", "z-img/prevent/treat-nosebleed.jpg", ["Vicks Sinex"]),
+    (["nosebleed prevent", "prevent nosebleed", "prevention for nosebleed", "nosebleed prevention"], "Avoid picking your nose or blowing it too hard. Use a humidifier to keep the air moist. Apply a thin layer of petroleum jelly like Vaseline inside your nostrils.", "z-img/prevent/prevent-nosebleed.png", ["Vaseline Petroleum Jelly","Vicks Sinex"]),
+    (["nosebleed treat", "treat nosebleed", "treatment for nosebleed", "nosebleed treatment"], "Lean forward slightly and pinch your nostrils together. Apply ice to the bridge of your nose. Seek medical help if the bleeding persists for more than 20 minutes.", "z-img/prevent/treat-nosebleed.jpg", ["Vaseline Petroleum Jelly", "Vicks Sinex"]),
     # Dislocations
     (["dislocation prevent", "prevent dislocation", "prevention for dislocation", "dislocation prevention"], "Warm up before physical activity. Strengthen muscles around joints with appropriate exercises. Use proper techniques when lifting heavy objects.", "z-img/prevent/prevent-dislocation.png", []),
     (["dislocation treat", "treat dislocation", "treatment for dislocation", "dislocation treatment"], "Do not try to realign the joint yourself. Immobilize the affected area and apply ice to reduce swelling. Seek medical help immediately.", "z-img/prevent/treat-dislocation.png", []),
@@ -86,8 +83,8 @@ dataset = [
     (["frostbite prevent", "prevent frostbite", "prevention for frostbite", "frostbite prevention"], "Dress in layers and keep extremities covered in cold weather. Avoid prolonged exposure to cold temperatures and windy conditions. Keep skin dry.", "z-img/prevent/prevent-frost.png", []),
     (["frostbite treat", "treat frostbite", "treatment for frostbite", "frostbite treatment"], "Gradually warm the affected area with warm (not hot) water. Do not rub the area. Seek medical help immediately.", "z-img/prevent/treat-frost.jpg", []),
     # Asthma Attack
-    (["asthma attack prevent", "prevent asthma attack", "prevention for asthma attack", "asthma attack prevention"], "Avoid triggers such as allergens, smoke, and pollution. Take prescribed medications regularly. Keep rescue inhaler on hand.", None, ["Bronchodilators", "Inhaled Corticosteroids (ICS)", "Leukotriene Modifiers"]), #none
-    (["asthma attack treat", "treat asthma attack", "treatment for asthma attack", "asthma attack treatment"], "Use rescue inhaler as prescribed. Sit upright and remain calm. Seek medical help if symptoms do not improve or worsen.", "z-img/prevent/treat-asthma.png", ["Bronchodilators", "Inhaled Corticosteroids (ICS)", "Leukotriene Modifiers"]),   
+    (["asthma prevent", "prevent asthma", "prevention for asthma", "asthma prevention"], "Avoid triggers such as allergens, smoke, and pollution. Take prescribed medications regularly. Keep rescue inhaler on hand.", None, ["Bronchodilators", "Inhaled Corticosteroids (ICS)", "Leukotriene Modifiers"]), #none
+    (["asthma treat", "treat asthma", "treatment for asthma", "asthma treatment"], "Use rescue inhaler as prescribed. Sit upright and remain calm. Seek medical help if symptoms do not improve or worsen.", "z-img/prevent/treat-asthma.png", ["Bronchodilators", "Inhaled Corticosteroids (ICS)", "Leukotriene Modifiers"]),   
     # Allergic Reaction
     (["allergic reaction prevent", "prevent allergic reaction", "prevention for allergic reaction", "allergic reaction prevention"], "Avoid known allergens. Carry an epinephrine auto-injector if prescribed. Wear a medical alert bracelet.", None, ["Antihistamines", "Decongestants"]),  #none
     (["allergic reaction treat", "treat allergic reaction", "treatment for allergic reaction", "allergic reaction treatment"], "Administer epinephrine auto-injector if available. Seek emergency medical help immediately.", "z-img/prevent/treat-allergy.png", ["Antihistamines", "Decongestants"]),
@@ -256,6 +253,7 @@ dataset = [
     (["hypothermia treat", "treat hypothermia", "treatment for hypothermia", "hypothermia treatment"], "The treatment for hypothermia involves gradually rewarming the body using passive measures such as blankets, warm clothing, and body-to-body contact, as well as active measures like warm fluids and heating pads applied to the trunk of the body. In severe cases, medical professionals may use more aggressive rewarming techniques such as warm intravenous fluids or extracorporeal rewarming methods.", None, ["Amiodarone (Cordarone)"]), #none
 ]
 
+
 fallback_response = "I'm sorry, I'm not trained to answer that question."
 
 
@@ -274,7 +272,7 @@ def generate_response(message):
             medicine_recommendation = medicines
             break
 
-        # If no exact matches, check for partial matches
+        # If no exact matches, check for partial matches using fuzzy matching
         for keyword in keywords:
             if difflib.SequenceMatcher(None, keyword.lower(), message.lower()).ratio() >= 0.7:
                 best_response = response

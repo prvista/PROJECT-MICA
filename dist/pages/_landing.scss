@@ -1,6 +1,11 @@
 .prompt {
   background: #000014;
   height: 89vh;
+  background-image: url(../components/img/MICA-BG-SIDE.png);
+  // background: linear-gradient(60deg, rgba(0, 9, 32, 0.7) 0%, rgba(4, 0, 53, 0.7) 100%), url(../components/img/MICA-BG-HOME-2.png);
+  background-position: center;
+  background-size: cover; 
+
 }
 
 .mica__heading {
@@ -12,7 +17,7 @@
     margin-bottom: -1.3rem;
 
     img {
-      width: 8rem;
+      width: 0rem;
     }
   }
 }
@@ -27,7 +32,8 @@ $input-width: calc(100% - 393px);
 #chat-container {
   width: 100%;
   max-width: 900px;
-  height: 470px;
+  // height: 470px;
+  height: 520px;
   // border: 1px solid #7e7e7e;
   border: 3px solid #002769;
   overflow-y: auto;
@@ -53,24 +59,24 @@ $input-width: calc(100% - 393px);
   border-radius: 10px;
   padding: 5px 10px;
   margin-bottom: 10px;
-  max-width: 70%; // Adjust as needed
+  max-width: 70%; 
 }
 
 .bot-message {
-  background-color: #f0f0f0; // Bot message background color
-  color: #000; // Bot message text color
-  border-radius: 10px; // Bot message border radius
-  padding: 10px; // Bot message padding
-  margin-bottom: 10px; // Bottom margin for bot message
-  max-width: 70%; // Adjust as needed
-  position: relative; // Ensure position is relative for positioning the image
+  background-color: #f0f0f0; 
+  color: #000; 
+  border-radius: 10px; 
+  padding: 10px; 
+  margin-bottom: 10px; 
+  max-width: 70%; 
+  position: relative; 
 }
 
 .bot-image {
   display: block;
-  margin: 10px auto; // Center the image
-  max-width: 100%; // Ensure the image does not exceed the width of the message container
-  border-radius: 10px; // Apply border radius to the image
+  margin: 10px auto; 
+  max-width: 100%; 
+  border-radius: 10px; 
 }
 
 #input-container {
@@ -194,6 +200,11 @@ $input-width: calc(100% - 393px);
 
 .home__page__welcome {
   background: #000014;
+  background-image: url(../components/img/MICA-BG-HOME-2.png);
+  // background: linear-gradient(60deg, rgba(0, 9, 32, 0.7) 0%, rgba(4, 0, 53, 0.7) 100%), url(../components/img/MICA-BG-HOME-2.png);
+  background-position: center;
+  background-size: cover; 
+
 
   &__wrapper {
     .home__page__text {
@@ -316,7 +327,6 @@ $input-width: calc(100% - 393px);
     &:hover{
       color: #c1c1c1;
       transition: 0.3s ease;
-
     }
   }
 }
@@ -331,8 +341,8 @@ $input-width: calc(100% - 393px);
   justify-content: center;
   margin: 0 auto;
   align-items: flex-end;
-  height: 40.3vh;
-  background: #000014;
+  height: 41vh;
+  // background: #000014;
 
   img {
     width: 33rem;
@@ -369,7 +379,18 @@ $input-width: calc(100% - 393px);
 
 
 
-
+// .home-background {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   background-image: url(../components/img/MICA-BG-HOME.png);
+//   background-position: center;
+//   background-size: cover;
+//   z-index: -1; /* Ensure it's behind other content */
+//   height: 100VH;
+// }
 
 
 
@@ -522,13 +543,14 @@ img.generated-image {
 
 .medicine-recommendation {
   position: fixed;
-  bottom: 253px;
+  // bottom: 253px;
+  top: 318px;
   // left: -242px;
   width: 242px;
   background: #000014;
   border: 1px solid #00438a;
   border-left: unset;
-  border-radius: 5px;
+  // border-radius: 5px;
   padding: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   z-index: 1100;

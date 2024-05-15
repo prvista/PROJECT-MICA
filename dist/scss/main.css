@@ -45,6 +45,9 @@ body {
 .prompt {
   background: #000014;
   height: 89vh;
+  background-image: url(../components/img/MICA-BG-SIDE.png);
+  background-position: center;
+  background-size: cover;
 }
 
 .mica__heading__wrapper {
@@ -55,7 +58,7 @@ body {
   margin-bottom: -1.3rem;
 }
 .mica__heading__wrapper img {
-  width: 8rem;
+  width: 0rem;
 }
 
 .dark {
@@ -66,7 +69,7 @@ body {
 #chat-container {
   width: 100%;
   max-width: 900px;
-  height: 470px;
+  height: 520px;
   border: 3px solid #002769;
   overflow-y: auto;
   padding: 10px;
@@ -195,6 +198,9 @@ body {
 
 .home__page__welcome {
   background: #000014;
+  background-image: url(../components/img/MICA-BG-HOME-2.png);
+  background-position: center;
+  background-size: cover;
 }
 .home__page__welcome__wrapper .home__page__text {
   display: flex;
@@ -286,8 +292,7 @@ body {
   justify-content: center;
   margin: 0 auto;
   align-items: flex-end;
-  height: 40.3vh;
-  background: #000014;
+  height: 41vh;
 }
 .home__mica img {
   width: 33rem;
@@ -427,12 +432,11 @@ img.generated-image {
 
 .medicine-recommendation {
   position: fixed;
-  bottom: 253px;
+  top: 318px;
   width: 242px;
   background: #000014;
   border: 1px solid #00438a;
   border-left: unset;
-  border-radius: 5px;
   padding: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   z-index: 1100;
