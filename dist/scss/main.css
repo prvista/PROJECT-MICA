@@ -134,6 +134,9 @@ body {
   border-color: #007bff;
   transition: 0.3s ease;
 }
+.input__container__wrapper input[type=text] input:focus {
+  border-color: #007bff;
+}
 .input__container__wrapper .btn__prompt {
   border: none;
   cursor: pointer;
@@ -764,7 +767,6 @@ img.generated-image {
   display: flex;
   justify-content: center;
   gap: 1rem;
-  align-items: center;
   padding-top: 3rem;
 }
 .about__wrapper .about__details {
@@ -801,7 +803,24 @@ img.generated-image {
   transition: 0.3s ease;
   background: #0073ee;
 }
+.about__wrapper .about__details .about__details__info {
+  flex-direction: column;
+  gap: 1rem;
+  display: flex;
+}
 
+@media screen and (max-width: 700px) {
+  .about__wrapper .about__details__wrapper h2 {
+    font-size: 2rem;
+  }
+  .about__wrapper .about__details__wrapper h3 {
+    font-size: 1.3rem;
+  }
+  .about__wrapper .about__details .about__details__info {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}
 .banner__mica {
   background-image: url(../components/img/MICA-BG-NEW.png);
   background-position: center;

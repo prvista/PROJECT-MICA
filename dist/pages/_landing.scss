@@ -99,6 +99,10 @@ $input-width: calc(100% - 393px);
         border-color: #007bff;
         transition: 0.3s ease;
       }
+
+      input:focus{
+        border-color: #007bff;
+      }
     }
 
     .btn__prompt {
