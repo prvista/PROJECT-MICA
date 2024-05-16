@@ -84,9 +84,26 @@ function fetchResponse(message) {
   xhr.onreadystatechange = function () {
       if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
           var data = JSON.parse(xhr.responseText);
-          appendBotMessage(data.response, data.image);
-          displayMedicineRecommendation(data.medicine_recommendation); 
-          speakBotMessage(data.response); 
+          if (data.appointment_prompt) {
+              // Show appointment message with inputs
+              var chatContainer = document.getElementById("chat-container");
+              var messageContainer = document.createElement("div");
+              messageContainer.classList.add("message-container", "bot-message");
+              messageContainer.innerHTML = `
+                  <div class="message">${data.response}</div>
+                  <label for="appointment-date">Choose a date:</label>
+                  <input type="date" id="appointment-date" name="appointment-date">
+                  <label for="appointment-time">Choose a time:</label>
+                  <input type="time" id="appointment-time" name="appointment-time">
+                  <button onclick="scheduleAppointment()">Schedule Appointment</button>
+              `;
+              chatContainer.appendChild(messageContainer);
+          } else {
+              // Regular chat message
+              appendBotMessage(data.response, data.image);
+              displayMedicineRecommendation(data.medicine_recommendation); 
+              speakBotMessage(data.response); 
+          }
       }
   };
   xhr.send(JSON.stringify({ message: message }));

@@ -241,3 +241,15 @@
 
 
 
+.appointment-inputs {
+  margin-top: 10px;
+}
+
+.appointment-inputs label {
+  display: block;
+}
+
+.appointment-inputs input[type="date"],
+.appointment-inputs input[type="time"] {
+  margin-bottom: 5px;
+}
