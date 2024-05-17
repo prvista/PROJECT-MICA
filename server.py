@@ -23,9 +23,26 @@ dataset = [
 
 fallback_response = "I'm sorry, I'm not trained to answer that question."
 
+
+
+
+
+
+
+
+
 # Define a global variable to store appointment details
 global appointment_details
 appointment_details = {}
+
+
+
+
+
+
+
+
+
 
 # Function to generate response based on user input
 def generate_response(message):
@@ -55,6 +72,133 @@ def generate_response(message):
     medicine_recommendation = [medicine.split('\n') for medicine in medicine_recommendation]
 
     return best_response, best_image, medicine_recommendation
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def handle_symptom_tracking(self, message):
+    global symptom_tracker
+
+    if 'track symptoms' in message.lower():
+        # Start symptom tracking
+        response_data = {
+            'response': "Sure! Let's track your symptoms. Please describe your symptoms.",
+            'chathead': 'MICA_chathead4.png',
+            'image': None,
+            'medicine_recommendation': []
+        }
+    else:
+        # Handle symptom description and record symptoms
+        # For simplicity, assume the message contains the symptoms
+        symptoms = message
+        severity = "Mild"  # You can prompt the user for severity or set a default value
+        appointment_details['reason'] = "Self-reported symptoms"  # You can adjust the reason as needed
+        
+        # Record the symptoms in the symptom tracker
+        record_symptoms(datetime.date.today().strftime("%Y-%m-%d"), symptoms, severity) # type: ignore
+
+        response_data = {
+            'response': "Your symptoms have been recorded. Thank you for tracking.",
+            'chathead': 'MICA_chathead4.png',
+            'image': None,
+            'medicine_recommendation': []
+        }
+
+    # Send the JSON response
+    self.send_response(200)
+    self.send_header('Content-type', 'application/json')
+    self.end_headers()
+    self.wfile.write(json.dumps(response_data).encode())
+
+# Existing code...
+
+class RequestHandler(BaseHTTPRequestHandler):
+    def do_POST(self):
+        content_length = int(self.headers['Content-Length'])
+        post_data = self.rfile.read(content_length)
+        data = json.loads(post_data)
+
+        if 'audio' in data:
+            # Speech-to-text conversion
+            audio_data = data['audio']
+            recognizer = sr.Recognizer()
+            with sr.AudioData(audio_data) as audio_file:
+                try:
+                    text = recognizer.recognize_google(audio_file)
+                    message = text.strip()
+                except sr.UnknownValueError:
+                    message = ""
+                except sr.RequestError as e:
+                    print("Could not request results from Google Speech Recognition service; {0}".format(e))
+                    message = ""
+        else:
+            message = data['message']
+
+        if "schedule an appointment" in message.lower() or "book an appointment" in message.lower() or appointment_details:
+            handle_appointment_scheduling(self, message)
+        elif "check symptoms" in message.lower() or appointment_details:
+            handle_symptom_checking(self, message)
+        elif "track symptoms" in message.lower() or appointment_details:
+            handle_symptom_tracking(self, message)
+        else:
+            response, image_path, medicine_recommendation = generate_response(message)
+            chathead_image = 'MICA_chathead4.png'  # Path to the chathead image
+            response_data = {
+                'response': response,
+                'chathead': chathead_image,
+                'image': image_path,
+                'medicine_recommendation': medicine_recommendation
+            }
+
+            # Send the JSON response with the bot's text response and image path to the client
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json')
+            self.end_headers()
+            self.wfile.write(json.dumps(response_data).encode())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Function to handle scheduling appointments
 def handle_appointment_scheduling(self, message):
@@ -126,6 +270,79 @@ def handle_appointment_scheduling(self, message):
     self.end_headers()
     self.wfile.write(json.dumps(response_data).encode())
 
+# Function to handle symptom checking
+def handle_symptom_checking(self, message):
+    if 'check symptoms' in message.lower():
+        # Start symptom checking
+        response_data = {
+            'response': "Sure! Let's check your symptoms. Please describe your symptoms.",
+            'chathead': 'MICA_chathead4.png',
+            'image': None,
+            'medicine_recommendation': []
+        }
+    else:
+        # Handle symptom description and provide recommendations based on symptoms
+        # This is a placeholder, you would replace this logic with actual symptom checking algorithms
+        response_data = {
+            'response': "Based on your description, it seems like you might have a cold. "
+                        "Here are some recommendations: rest, drink plenty of fluids, and consider taking over-the-counter cold medication.",
+            'chathead': 'MICA_chathead4.png',
+            'image': None,
+            'medicine_recommendation': ["Over-the-counter cold medication"]
+        }
+
+    # Send the JSON response
+    self.send_response(200)
+    self.send_header('Content-type', 'application/json')
+    self.end_headers()
+    self.wfile.write(json.dumps(response_data).encode())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 class RequestHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         if self.path == '/':
@@ -184,6 +401,8 @@ class RequestHandler(BaseHTTPRequestHandler):
 
         if "schedule an appointment" in message.lower() or "book an appointment" in message.lower() or appointment_details:
             handle_appointment_scheduling(self, message)
+        elif "check symptoms" in message.lower() or appointment_details:
+            handle_symptom_checking(self, message)
         else:
             response, image_path, medicine_recommendation = generate_response(message)
             chathead_image = 'MICA_chathead4.png'  # Path to the chathead image

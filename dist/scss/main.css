@@ -27,6 +27,7 @@ body {
   line-height: 1.4;
   color: #2b2b2b;
   font-family: "Inter", sans-serif;
+  background: #000014;
 }
 
 .kamote__wrapper {
@@ -404,17 +405,20 @@ img.generated-image {
   background: #000a18;
   transition: 0.3s ease;
 }
+.prompt-bubble .prompt-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  transition: 0.2s ease;
+}
+.prompt-bubble .prompt-list ul li:hover {
+  transition: 0.2s ease;
+}
 @media screen and (max-width: 1500px) {
   .prompt-bubble {
     top: 212px;
     transition: 0.3s ease;
   }
-}
-
-.prompt-list {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
 }
 
 .prompt-item {
@@ -461,6 +465,7 @@ img.generated-image {
 }
 .medicine-recommendation.active {
   left: 0;
+  border-radius: 5px;
 }
 @media screen and (max-width: 1500px) {
   .medicine-recommendation {
@@ -878,7 +883,6 @@ img.generated-image {
   top: 0;
   height: 100vh;
   width: 242px;
-  padding: 14px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   z-index: 1001;
   background: #000014;
@@ -888,13 +892,20 @@ img.generated-image {
   flex-direction: column;
 }
 .prompt__side-panel .panel__img__wrapper img {
-  width: 15rem;
+  width: 17rem;
+  padding: 1rem;
 }
 .prompt__side-panel .prompt-list {
   list-style: none;
   padding: 0;
   margin-top: 50px;
   font-size: 2rem;
+}
+.prompt__side-panel .prompt-list li {
+  transition: 0.2s ease;
+}
+.prompt__side-panel .prompt-list li:hover {
+  transition: 0.2s ease;
 }
 .prompt__side-panel .prompt-item {
   padding: 10px 0;
@@ -906,6 +917,7 @@ img.generated-image {
 .prompt__side-panel .prompt-item a {
   text-decoration: none;
   color: white;
+  padding: 1rem;
 }
 .prompt__side-panel .prompt-item.active {
   background-color: #ddd;

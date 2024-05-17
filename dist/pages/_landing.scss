@@ -503,7 +503,21 @@ img.generated-image {
   color: white;
   background: #000a18;
   transition: 0.3s ease;
-
+  
+  .prompt-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    transition: 0.2s ease;
+  
+    ul{
+      li{
+        &:hover{
+          transition: 0.2s ease;
+        }
+      }
+    }
+  }
 
   @media screen and (max-width: 1500px){
     top: 212px;
@@ -512,11 +526,7 @@ img.generated-image {
 
 }
 
-.prompt-list {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
+
 
 .prompt-item {
   cursor: pointer;
@@ -580,6 +590,7 @@ img.generated-image {
 
   &.active {
     left: 0;
+    border-radius: 5px;
   }
 
   @media screen and (max-width: 1500px) {
