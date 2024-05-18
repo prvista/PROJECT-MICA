@@ -91,35 +91,27 @@
             </ul>
           </div>
 
-          <div class="input__container__wrapper">
+          <div class="input-wrapper">
             <input
               class="input_prompt"
               type="text"
               id="user-input"
-              placeholder="Message MICA..."
+              placeholder="Your message"
             />
-            <audio id="messageSound" src="sounds/message_sound.wav"></audio>
-            <button
-              class="btn__prompt"
-              onclick="sendMessage()"
-              onmousedown="sound.play()"
-            >
+            <button class="btn__prompt" onclick="sendMessage()">
               <i class="fas fa-paper-plane"></i>
             </button>
             <button id="mic-button">
               <i class="fa-solid fa-microphone"></i>
             </button>
-            <audio id="messageSound">
-              <source src="message_sound.wav" type="audio/wav" />
-              Your browser does not support the audio element.
-            </audio>
           </div>
+          <audio id="messageSound" src="sounds/message_sound.wav"></audio>  
         </div>
       </div>
     </section>
 
     <section class="medicine-recommendation">
-      <h2>Recommended Medicine</h2>
+      <h2>Med Recommendation</h2>
       <div id="medicine-recommendation-content"></div>
     </section>
 

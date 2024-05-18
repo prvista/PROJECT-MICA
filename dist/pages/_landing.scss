@@ -1,11 +1,17 @@
 .prompt {
   background: #000014;
-  height: 89vh;
-  background-image: url(../components/img/MICA-BG-CP.png);
+  // height: 89vh;
+  height: 92.5vh;
+  background-image: url(../components/img/MICA-BOTTOM-RIGHT.png);
   // background: linear-gradient(60deg, rgba(0, 9, 32, 0.7) 0%, rgba(4, 0, 53, 0.7) 100%), url(../components/img/MICA-BG-HOME-2.png);
   background-position: center;
   background-size: cover; 
+}
 
+@media screen and (max-width: 1400px){
+  .prompt{
+  height: 89vh;
+  }
 }
 
 .mica__heading {
@@ -65,8 +71,11 @@ $input-width: calc(100% - 393px);
 }
 
 .bot-message {
-  background-color: #f0f0f0; 
-  color: #000; 
+  // background-color: #f0f0f0; 
+  // color: #000; 
+
+  background-color: rgb(55, 58, 67);
+  color: #ffffff;
   border-radius: 10px; 
   padding: 10px; 
   margin-bottom: 10px; 
@@ -81,63 +90,94 @@ $input-width: calc(100% - 393px);
   border-radius: 10px; 
 }
 
-#input-container {
-  margin-top: -2px;
-}
 
-.input__container {
+
+
+
+
+
+
+
+.input-container {
   display: flex;
+  justify-content: center;
+  margin-top: 20px;
 
-  &__wrapper {
-    justify-content: center;
-    margin: 0 auto;
-    text-align: center;
-
-    input[type="text"] {
-      // width: $input-width;
-      min-width: 67%;
-      // width: 85rem;
-      padding: 15px;
-      margin-bottom: 10px;
-      border-radius: 3rem;
-      transition: 0.3s ease;
-      // background: #f0f0f0;
-      background: #ffffff;
-
-      &:hover {
-        border-color: #007bff;
-        transition: 0.3s ease;
-      }
-
-      input:focus{
-        border-color: #007bff;
-      }
-    }
-
-    .btn__prompt {
-      border: none;
-      cursor: pointer;
-      background: none;
-      align-items: center;
-      color: #258eff;
-      
-
-
-      i {
-        font-size: 2.7rem;
-        transition: 0.3s ease;
-
-        &:hover {
-          color: #c1c1c1;
-          transition: 0.3s ease;
-        }
-      }
-      &:hover {
-        color: #000;
-      }
-    }
-  }
 }
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  // background-color: rgb(250, 250, 250);
+  background-color: rgb(55 58 67);
+  border-radius: 1rem;
+  padding: 10px;
+  border: 2px solid transparent; 
+  transition: border-color 0.3s ease; 
+  width: 90rem;
+  max-width: 100%;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.input-wrapper:focus-within,
+.input-wrapper:active {
+  border-color: #004896; 
+}
+
+.input_prompt {
+  flex-grow: 1;
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: 16px;
+  outline: none;
+  color: #999; 
+}
+
+.input_prompt::placeholder {
+  color: #999; 
+}
+
+.btn__prompt,
+#mic-button {
+  border: none;
+  background: none;
+  font-size: 22px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.btn__prompt:hover,
+#mic-button:hover {
+  color: #006cdf;
+}
+
+#mic-button {
+  margin-left: 7px;
+  color: #c1c1c1;
+}
+
+.btn__prompt{
+  color: #c1c1c1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media screen and (max-width: 700px){
   .prompt{
@@ -316,23 +356,6 @@ $input-width: calc(100% - 393px);
 
 
 
-#mic-button{
-  background: transparent;
-  border: none;
-
-  i{
-    color: #258eff;
-    transition: 0.3s ease;
-    font-size: 2.7rem;
-    cursor: pointer;
-
-
-    &:hover{
-      color: #c1c1c1;
-      transition: 0.3s ease;
-    }
-  }
-}
 
 
 
@@ -582,7 +605,8 @@ img.generated-image {
 
   h2 {
     font-size: 18px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+    font-weight: 500;
   }
 
   #medicine-recommendation-content {
