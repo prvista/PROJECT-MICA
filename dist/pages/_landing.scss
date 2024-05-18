@@ -1,7 +1,7 @@
 .prompt {
   background: #000014;
   height: 89vh;
-  background-image: url(../components/img/MICA-BG-SIDE.png);
+  background-image: url(../components/img/MICA-BG-CP.png);
   // background: linear-gradient(60deg, rgba(0, 9, 32, 0.7) 0%, rgba(4, 0, 53, 0.7) 100%), url(../components/img/MICA-BG-HOME-2.png);
   background-position: center;
   background-size: cover; 
@@ -33,15 +33,17 @@ $input-width: calc(100% - 393px);
   width: 100%;
   max-width: 900px;
   // height: 470px;
-  height: 520px;
+  height: 531px;
   // border: 1px solid #7e7e7e;
   border: 3px solid #002769;
   overflow-y: auto;
   padding: 10px;
   margin: 0 auto;
   border-radius: 1rem;
-  background: #fff;
+  // background: #fff;
+  background: #fff0;
 }
+
 
 .message-container {
   display: flex;
@@ -99,7 +101,8 @@ $input-width: calc(100% - 393px);
       margin-bottom: 10px;
       border-radius: 3rem;
       transition: 0.3s ease;
-      background: #f0f0f0;
+      // background: #f0f0f0;
+      background: #ffffff;
 
       &:hover {
         border-color: #007bff;
@@ -121,7 +124,7 @@ $input-width: calc(100% - 393px);
 
 
       i {
-        font-size: 2.5rem;
+        font-size: 2.7rem;
         transition: 0.3s ease;
 
         &:hover {
@@ -320,7 +323,7 @@ $input-width: calc(100% - 393px);
   i{
     color: #258eff;
     transition: 0.3s ease;
-    font-size: 2.5rem;
+    font-size: 2.7rem;
     cursor: pointer;
 
 
@@ -436,8 +439,8 @@ img.generated-image {
 
 .prompt-button {
   position: fixed;
-  top: 122px;
-  right: 10px;
+  top: 28px;
+  right: 15px;
   // background-color: #007bff;
   background-color: #1c81ec;
   color: #ffffff;
@@ -466,6 +469,12 @@ img.generated-image {
     transition: 0.3s ease;
   } 
 
+
+  @media screen and (max-width: 1400px){
+    top: 122px;
+    right: 10px;
+  }
+
   @media screen and (max-width: 710px) {
     top: 590px;
     // right: 18px;
@@ -483,12 +492,15 @@ img.generated-image {
   }
 }
 
+
+
+
 .prompt-bubble {
   position: fixed;
-  top: 165px;
+  top: 84px;
   right: -90%; 
   width: auto;
-  height: 40rem; 
+  height: 47rem; 
   background-color: #ffffff;
   // border: 1px solid #ccc;
   border: 1px solid #00438a;
@@ -519,8 +531,8 @@ img.generated-image {
     }
   }
 
-  @media screen and (max-width: 1500px){
-    top: 212px;
+  @media screen and (max-width: 1400px){
+    top: 114px;
     transition: 0.3s ease;
   }
 
@@ -554,7 +566,7 @@ img.generated-image {
 .medicine-recommendation {
   position: fixed;
   // bottom: 253px;
-  top: 318px;
+  top: 369px;
   // left: -242px;
   width: 242px;
   background: #000014;
@@ -593,7 +605,7 @@ img.generated-image {
     border-radius: 5px;
   }
 
-  @media screen and (max-width: 1500px) {
+  @media screen and (max-width: 1400px) {
     left: -242px;
   }
 }
@@ -626,12 +638,12 @@ img.generated-image {
     transition: 0.3s ease;
   }
 
-  @media screen and (max-width: 1500px) {
+  @media screen and (max-width: 1400px) {
     display: block;
     transition: 0.3s ease;
   }
 
-  @media screen and (max-width: 1046px){
+  @media screen and (max-width: 904px){
     top: 120px;
     right: 7rem;
     transition: 0.3s ease;

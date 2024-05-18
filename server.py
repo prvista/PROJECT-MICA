@@ -5,6 +5,7 @@ import speech_recognition as sr
 
 # Define your dataset and other variables here...
 dataset = [
+    (["Home"], "Home Page👋", None, [""]),
     (["About"], "About Page👋", None, [""]),
     (["Demo"], "Demo Page👋", None, [""]),
     (["Health Tips"], "Health Tips Page👋", None, [""]),
@@ -16,9 +17,12 @@ dataset = [
     (["sprained ankle", "ice for a sprained ankle"], "Apply ice to the affected area and elevate it to reduce swelling. Rest and avoid putting weight on the ankle.", "z-img/sprained-ankle.jpg", [""]),
     (["prevent COVID-19", "prevention measures for COVID-19"], "To prevent COVID-19, practice good hygiene by washing your hands frequently, wearing masks in public places, practicing social distancing, and getting vaccinated when available.", None, [""]),
     (["updates COVID-19", "status or update for COVID-19"], "For the latest updates on COVID-19, refer to reliable sources such as the World Health Organization (WHO) or your local health department.", None, [""]),
-    (["What is MICA?"], "I am MICA or Medical Information Chat Assistant. I assist users with healthcare-related inquiries and provide valuable information and assistance.", "MICA-dila.png", [""]),
+    (["What is MICA?"], "I am MICA or Medical Information Chat Assistant. I assist users with healthcare-related inquiries and provide valuable information and assistance.", "./dist/components/img/MICA-lightblue_logo.png", [""]),
     (["Hi"], "Hello! How can I help you?👋", "z-img/MICA_hello.png", [""]),
     (["Hello"], "Hello! How can I help you?👋", "z-img/MICA_hello.png", [""]),
+    
+    
+
 ]
 
 fallback_response = "I'm sorry, I'm not trained to answer that question."

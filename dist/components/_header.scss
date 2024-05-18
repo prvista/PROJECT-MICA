@@ -235,7 +235,7 @@
 
 
 .btn__homepage {
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: flex-start;
     width: 50px;
@@ -251,6 +251,7 @@
     // background: rgb(0, 0, 104);
     // background: #3CBEEE;
     background-color: #1c81ec;
+    
 
     
     
@@ -312,7 +313,11 @@
     }
   }
 
-  
+  @media screen and (max-width: 1400px){
+    .btn__homepage{
+      display: flex;
+    }
+  }
 
 
   @media screen and (max-width: 1600px){

@@ -223,7 +223,7 @@
       }
     }
   
-    @media screen and (max-width: 1500px) {
+    @media screen and (max-width: 1400px) {
       display: none;
     }
   }
@@ -233,13 +233,13 @@
 .branding-prompt{
   &__wrapper{
     img{
-      width: 11rem;
+      width: 0rem;
     }
   }
 }
 
 
-@media screen and (max-width:1500px){
+@media screen and (max-width:1400px){
   .branding-prompt{
     &__wrapper{
       img{
