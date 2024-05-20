@@ -81,7 +81,7 @@ body {
   padding: 10px;
   margin: 0 auto;
   border-radius: 1rem;
-  background: rgba(255, 255, 255, 0);
+  background: #fff;
 }
 
 .message-container {
@@ -103,8 +103,8 @@ body {
 }
 
 .bot-message {
-  background-color: rgb(55, 58, 67);
-  color: #ffffff;
+  background-color: #f0f0f0;
+  color: #000;
   border-radius: 10px;
   padding: 10px;
   margin-bottom: 10px;

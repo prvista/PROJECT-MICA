@@ -46,8 +46,8 @@ $input-width: calc(100% - 393px);
   padding: 10px;
   margin: 0 auto;
   border-radius: 1rem;
-  // background: #fff;
-  background: #fff0;
+  background: #fff;
+  // background: #fff0;
 }
 
 
@@ -71,14 +71,14 @@ $input-width: calc(100% - 393px);
 }
 
 .bot-message {
-  // background-color: #f0f0f0; 
-  // color: #000; 
+  background-color: #f0f0f0; 
+  color: #000; 
 
-  background-color: rgb(55, 58, 67);
-  color: #ffffff;
+  // background-color: rgb(55, 58, 67);
+  // color: #ffffff;
   border-radius: 10px; 
   padding: 10px; 
-  margin-bottom: 10px; 
+  margin-bottom: 10px;  
   max-width: 70%; 
   position: relative; 
 }
