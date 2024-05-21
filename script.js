@@ -219,3 +219,27 @@ micButton.addEventListener("click", function() {
 });
 
 setInterval(changeText, 4000); 
+
+
+function displayMedicineRecommendation(medicines) {
+  var medicineRecommendationContent = document.getElementById("medicine-recommendation-content");
+  var recoBadge = document.getElementById("reco-badge");
+  medicineRecommendationContent.innerHTML = ""; // Clear previous recommendations
+
+  if (medicines && medicines.length > 0) {
+    medicines.forEach(function (medicine, index) {
+      var medicineElement = document.createElement("div");
+      medicineElement.textContent = medicine;
+      medicineRecommendationContent.appendChild(medicineElement);
+      
+      // Add small space between medicine recommendations, except for the last one
+      if (index < medicines.length - 1) {
+        medicineRecommendationContent.appendChild(document.createTextNode(" "));
+      }
+    });
+    recoBadge.textContent = medicines.length; // Update badge count
+  } else {
+    medicineRecommendationContent.textContent = "No medicine recommendation available.";
+    recoBadge.textContent = "0"; // Reset badge count
+  }
+}

@@ -388,7 +388,7 @@ img.generated-image {
 }
 @media screen and (max-width: 710px) {
   .prompt-button {
-    top: 590px;
+    top: 550px;
     font-size: 1.5rem;
     padding: 8px;
     transition: 0.5s ease;
@@ -490,6 +490,17 @@ img.generated-image {
   }
 }
 
+.badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 3px 8px;
+  font-size: 12px;
+}
+
 .reco-button {
   display: none;
   position: fixed;
@@ -529,7 +540,7 @@ img.generated-image {
 }
 @media screen and (max-width: 710px) {
   .reco-button {
-    top: 554px;
+    top: 510px;
     right: 9px;
     font-size: 1.5rem;
     padding: 6px 8px;
