@@ -248,6 +248,7 @@ body {
 }
 .home__page__welcome__wrapper .home__page__text__wrapper .home__title h1 {
   font-size: 6rem;
+  text-shadow: 1px 1px 5px #064995, 1px 1px 10px #898989;
 }
 .home__page__welcome__wrapper .home__page__text__wrapper .home__title h2 {
   display: contents;
@@ -349,7 +350,7 @@ img.generated-image {
   font-size: 1.2rem; /* Adjust the font size as needed */
   font-weight: 500;
   color: #999;
-  margin-bottom: 5px;
+  margin-top: 2px;
 }
 
 .prompt-button {
@@ -462,6 +463,13 @@ img.generated-image {
   z-index: 1100;
   color: white;
   transition: left 0.3s ease;
+}
+.medicine-recommendation img {
+  width: 55%;
+  display: flex;
+  align-self: center;
+  margin: 0 auto;
+  padding: 0.5rem;
 }
 .medicine-recommendation h2 {
   font-size: 18px;

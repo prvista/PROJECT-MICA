@@ -2,6 +2,7 @@ import json
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import difflib
 import speech_recognition as sr
+import random
 import datetime
 
 # Define your dataset and other variables here...
@@ -18,24 +19,26 @@ dataset = [
     (["sprained ankle", "ice for a sprained ankle"], "Apply ice to the affected area and elevate it to reduce swelling. Rest and avoid putting weight on the ankle.", "z-img/sprained-ankle.jpg", []),
     (["prevent COVID-19", "prevention measures for COVID-19"], "To prevent COVID-19, practice good hygiene by washing your hands frequently, wearing masks in public places, practicing social distancing, and getting vaccinated when available.", None, []),
     (["updates COVID-19", "status or update for COVID-19"], "For the latest updates on COVID-19, refer to reliable sources such as the World Health Organization (WHO) or your local health department.", None, []),
-    (["What is MICA?"], "I am MICA or Medical Information Chat Assistant. I assist users with healthcare-related inquiries and provide valuable information and assistance.", "./dist/components/img/MICA-lightblue_logo.png", []),
-    (["Hi"], "Hello! How can I help you?👋", "z-img/MICA_hello.png", []),
-    (["Hello"], "Hello! How can I help you?👋", "z-img/MICA_hello.png", []),
+    (["What is MICA?"], "I am MICA or Medical Information Chat Assistant. I assist users with healthcare-related inquiries and provide valuable information and assistance.", "./dist/components/img/MICA-lightblue_logo.png", [""]),
+    (["Hi"], "Hello! How can I help you?👋", "z-img/MICA_hello.png", [""]),
+    (["Hello"], "Hello! How can I help you?👋", "z-img/MICA_hello.png", [""]),
 ]
 
 fallback_response = "I'm sorry, I'm not trained to answer that question."
 
-# Define global variables to store appointment, symptom tracking, and symptom checking details
+# Define global variables to store appointment, symptom tracking, symptom checking details, and quiz details
 global appointment_details
 appointment_details = {}
-
-global symptom_tracking_details
-symptom_tracking_details = {}
 
 global symptom_checking_details
 symptom_checking_details = {}
 
-# Function to generate response based on user input
+global quiz_details
+quiz_details = {}
+
+
+
+
 def generate_response(message):
     # Initialize variables to track maximum score and corresponding response
     best_response = fallback_response
@@ -63,6 +66,12 @@ def generate_response(message):
     medicine_recommendation = [medicine.split('\n') for medicine in medicine_recommendation]
 
     return best_response, best_image, medicine_recommendation
+
+
+
+
+
+
 
 
 
@@ -101,86 +110,11 @@ symptom_dataset = [
     }
 ]
 
-
-
-
-# Initialize the global variable for symptom checking details
 symptom_checking_details = {}
 
 
 
 
-
-
-
-
-# Function to handle symptom tracking
-# def handle_symptom_tracking(self, message):
-#     global symptom_tracking_details
-
-#     if 'track symptoms' in message.lower() or 'start tracking symptoms' in message.lower():
-#         if symptom_tracking_details:
-#             response_data = {
-#                 'response': "You already have a symptom tracking session in progress. Would you like to continue?",
-#                 'chathead': 'MICA_chathead4.png',
-#                 'image': None,
-#                 'medicine_recommendation': []
-#             }
-#         else:
-#             symptom_tracking_details['stage'] = 'description'
-#             response_data = {
-#                 'response': "Sure! Let's start tracking your symptoms. Please describe your symptoms.",
-#                 'chathead': 'MICA_chathead4.png',
-#                 'image': None,
-#                 'medicine_recommendation': []
-#             }
-#     elif symptom_tracking_details:
-#         stage = symptom_tracking_details.get('stage')
-
-#         if stage == 'description':
-#             symptom_tracking_details['description'] = message
-#             symptom_tracking_details['stage'] = 'severity'
-#             response_data = {
-#                 'response': "Got it. How severe are your symptoms on a scale from 1 to 10?",
-#                 'chathead': 'MICA_chathead4.png',
-#                 'image': None,
-#                 'medicine_recommendation': []
-#             }
-#         elif stage == 'severity':
-#             symptom_tracking_details['severity'] = message
-#             response_data = {
-#                 'response': "Thank you for the information. Your symptoms have been recorded.",
-#                 'chathead': 'MICA_chathead4.png',
-#                 'image': None,
-#                 'medicine_recommendation': []
-#             }
-#             # Reset symptom_tracking_details for the next tracking request
-#             symptom_tracking_details = {}
-#     else:
-#         response_data = {
-#             'response': "I'm sorry, I didn't understand that. Could you please repeat?",
-#             'chathead': 'MICA_chathead4.png',
-#             'image': None,
-#             'medicine_recommendation': []
-#         }
-
-#     # Send the JSON response
-#     self.send_response(200)
-#     self.send_header('Content-type', 'application/json')
-#     self.end_headers()
-#     self.wfile.write(json.dumps(response_data).encode())
-
-
-
-
-
-
-
-
-
-
-
-# Function to handle scheduling appointments
 def handle_appointment_scheduling(self, message):
     global appointment_details
 
@@ -242,6 +176,11 @@ def handle_appointment_scheduling(self, message):
     self.send_header('Content-type', 'application/json')
     self.end_headers()
     self.wfile.write(json.dumps(response_data).encode())
+
+
+
+
+
 
 
 
@@ -329,6 +268,141 @@ def handle_symptom_checking(self, message):
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+quiz_dataset = [
+    {
+        "question": "\nWhat is the normal body temperature in Celsius?\n",
+        "options": ["\nA) 36°C", "B) 37°C", "C) 38°C\n"],
+        "answer": "B) 37°C"
+    },
+    {
+        "question": "\nWhat vitamin is produced when a person is exposed to sunlight?\n",
+        "options": ["A) Vitamin A", "B) Vitamin B", "C) Vitamin D"],
+        "answer": "C) Vitamin D"
+    },
+    {
+        "question": "\nHow often should you brush your teeth?\n",
+        "options": ["A) Once a day", "B) Twice a day", "C) Three times a day"],
+        "answer": "B) Twice a day"
+    },
+    {
+        "question": "\nWhat is a common symptom of dehydration?\n",
+        "options": ["A) Headache", "B) Dizziness", "C) Dry mouth"],
+        "answer": "A) Headache"
+    },
+    {
+        "question": "\nWhat is the main function of red blood cells?\n",
+        "options": ["A) Fight infections", "B) Transport oxygen", "C) Clot blood"],
+        "answer": "B) Transport oxygen"
+    },
+    {
+        "question": "\nWhich of the following is a symptom of the flu?\n",
+        "options": ["A) Runny nose", "B) Sore throat", "C) Fever"],
+        "answer": "C) Fever"
+    },
+    {
+        "question": "\nHow many hours of sleep are recommended for adults?\n",
+        "options": ["A) 4-5 hours", "B) 6-7 hours", "C) 7-9 hours"],
+        "answer": "C) 7-9 hours"
+    },
+    {
+        "question": "\nWhat is the primary cause of Type 1 diabetes?\n",
+        "options": ["A) Obesity", "B) Genetics", "C) Virus"],
+        "answer": "B) Genetics"
+    },
+    {
+        "question": "\nWhich organ is affected by hepatitis?\n",
+        "options": ["A) Heart", "B) Liver", "C) Kidneys"],
+        "answer": "B) Liver"
+    },
+    {
+        "question": "\nWhat is the recommended daily intake of water for an average adult?\n",
+        "options": ["A) 1-2 liters", "B) 2-3 liters", "C) 3-4 liters"],
+        "answer": "B) 2-3 liters"
+    }
+]
+
+def generate_quiz():
+    quiz = random.sample(quiz_dataset, 5)
+    return quiz
+
+def handle_quiz(self, message):
+    global quiz_details
+
+    if 'health quiz' in message.lower():
+        quiz_details['quiz'] = generate_quiz()
+        quiz_details['current_question'] = 0
+        quiz_details['score'] = 0
+        question = quiz_details['quiz'][0]['question']
+        options = quiz_details['quiz'][0]['options']
+        response_data = {
+            'response': f"Question 1: {question}\n\nOptions: {', '.join(options)}",
+            'chathead': 'MICA_chathead4.png',
+            'image': None,
+            'medicine_recommendation': []
+        }
+    elif quiz_details:
+        current_question = quiz_details['current_question']
+        quiz = quiz_details['quiz']
+        user_answer = message.strip().upper()  # Convert answer to uppercase for consistency
+        correct_answer = quiz[current_question]['answer'].split(')')[0].strip().upper()  # Extract the correct answer (A, B, or C)
+
+        if user_answer == correct_answer:
+            quiz_details['score'] += 1
+            feedback = "Correct!"
+        else:
+            feedback = f"Wrong. The correct answer is: {quiz[current_question]['answer']}"
+
+        current_question += 1
+
+        if current_question < len(quiz):
+            quiz_details['current_question'] = current_question
+            question = quiz[current_question]['question']
+            options = quiz[current_question]['options']
+            response_data = {
+    'response': f"{feedback}\n\nQuestion {current_question + 1}: {question}\nOptions: {', '.join(options)}",
+    'chathead': 'MICA_chathead4.png',
+    'image': None,
+    'medicine_recommendation': []
+}
+
+        else:
+            score = quiz_details['score']
+            total_questions = len(quiz)
+            response_data = {
+                'response': f"{feedback}\n\nQuiz finished! Your score: {score} over {total_questions}. Congratulations!👏",
+                'chathead': 'MICA_chathead4.png',
+                'image': None,
+                'medicine_recommendation': ["You're great! Keep it up!👏"]
+            }
+            quiz_details = {}
+    else:
+        response_data = {
+            'response': "I'm sorry, I didn't understand that. Could you please repeat?",
+            'chathead': 'MICA_chathead4.png',
+            'image': None,
+            'medicine_recommendation': []
+        }
+
+    self.send_response(200)
+    self.send_header('Content-type', 'application/json')
+    self.end_headers()
+    self.wfile.write(json.dumps(response_data).encode())
+
+
+
+
+
 class RequestHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         if self.path == '/':
@@ -343,9 +417,11 @@ class RequestHandler(BaseHTTPRequestHandler):
             elif self.path.endswith('.png'):
                 mimetype = 'image/png'
             elif self.path.endswith('.jpg'):
-                mimetype = 'image/jpg'
+                mimetype = 'video/jpg'
             elif self.path.endswith('.gif'):
-                mimetype = 'image/gif'
+                mimetype = 'image/.gif'
+            elif self.path.endswith('\n'):
+                mimetype = 'text/html'
             else:
                 raise Exception('Unknown file type')
 
@@ -384,8 +460,8 @@ class RequestHandler(BaseHTTPRequestHandler):
             handle_appointment_scheduling(self, message)
         elif "check symptoms" in message.lower() or symptom_checking_details:
             handle_symptom_checking(self, message)
-        elif "track symptoms" in message.lower() or symptom_tracking_details:
-            handle_symptom_tracking(self, message)
+        elif "health quiz" in message.lower() or quiz_details:
+            handle_quiz(self, message)
         else:
             response, image_path, medicine_recommendation = generate_response(message)
             chathead_image = 'MICA_chathead4.png'
@@ -406,3 +482,4 @@ if __name__ == '__main__':
     httpd = HTTPServer(server_address, RequestHandler)
     print('Starting server on port 8000...')
     httpd.serve_forever()
+

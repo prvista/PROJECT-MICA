@@ -118,7 +118,50 @@ function fetchResponse(message) {
 
 
 function appendBotMessage(message, imageUrl) {
-  appendMessage("bot", message, imageUrl);
+  var chatContainer = document.getElementById("chat-container");
+  var messageContainer = document.createElement("div");
+  var messageElement = document.createElement("div");
+  var timeElement = document.createElement("div");
+  var imageContainer = document.createElement("div");
+  var imageElement = document.createElement("img");
+
+  messageContainer.classList.add("message-container", "bot-message");
+  messageElement.classList.add("message");
+  timeElement.classList.add("message-time");
+  imageContainer.classList.add("image-container");
+  imageContainer.style.width = "40%"; // Set width to 50%
+
+  // Split the message into lines and create separate divs for each line
+  var lines = message.split('\n');
+  lines.forEach(function(line, index) {
+    var lineElement = document.createElement("div");
+    lineElement.textContent = line;
+    messageElement.appendChild(lineElement);
+  });
+
+  // Add the current time
+  timeElement.textContent = getCurrentTime();
+
+  // Append message and time elements to the message container
+  messageContainer.appendChild(messageElement);
+  messageContainer.appendChild(timeElement);
+
+  // Set the image source if available
+  if (imageUrl) {
+    imageElement.src = imageUrl;
+    imageElement.classList.add("bot-image");
+    imageContainer.appendChild(imageElement);
+  }
+
+  // Append message container to chat container
+  chatContainer.appendChild(messageContainer);
+  
+  // Append image container to chat container
+  chatContainer.appendChild(imageContainer);
+
+  // Adjust message container width based on content width
+  var contentWidth = messageElement.offsetWidth + timeElement.offsetWidth;
+  messageContainer.style.width = contentWidth + "px";
 }
 
 
