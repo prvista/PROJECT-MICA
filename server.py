@@ -5,7 +5,7 @@ import speech_recognition as sr
 import random
 import datetime
 
-# Define your dataset and other variables here...
+
 dataset = [
     (["Home"], "Home Page👋", None, []),
     (["About"], "About Page👋", None, []),
@@ -26,7 +26,7 @@ dataset = [
 
 fallback_response = "I'm sorry, I'm not trained to answer that question."
 
-# Define global variables to store appointment, symptom tracking, symptom checking details, and quiz details
+
 global appointment_details
 appointment_details = {}
 
@@ -88,7 +88,7 @@ symptom_dataset = [
             }
         ]
     },
-    {
+    {   
         "symptoms": ["sore throat", "throat pain"],
         "conditions": [
             {
@@ -267,7 +267,7 @@ def handle_symptom_checking(self, message):
 
 
 
-
+    
 
 
 

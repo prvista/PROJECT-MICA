@@ -13,6 +13,7 @@ function sendMessage() {
 
 
 
+
 function appendMessage(sender, message, imageUrl) {
   var chatContainer = document.getElementById("chat-container");
   var messageContainer = document.createElement("div");
@@ -232,11 +233,38 @@ function speakBotMessage(message) {
   speechSynthesis.speak(speech);
 }
 
+
+
+
+
+
+
+
+
+
 function handleKeyPress(event) {
   if (event.key === "Enter") {
-      sendMessage(); // Call sendMessage function when Enter key is pressed
+    sendMessage(); // Submit message on Enter key press
+  } else if (event.key === " ") {
+    // Focus on microphone button on spacebar press
+    var micButton = document.getElementById("mic-button");
+    if (micButton) {
+      micButton.focus();
+    }
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 function handlePromptClick(prompt) {
   document.getElementById("user-input").value = prompt;

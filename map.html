@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MICA Street Map</title>
+    <link rel="stylesheet" href="./dist/scss/main.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css"
+    />
+    <link rel="icon" type="image/png" href="dist/components/img/MICA-tab.png" />
+
+    <style>
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+        font-size: 18px;
+        font-family: 'Inter', sans-serif;
+        #map {
+          height: 100%;
+          width: 100%;
+        }
+        .currentBtn {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          z-index: 1000;
+          padding: 5px 10px;
+          border: none;
+          background: #007bff;
+          color: white;
+          border-radius: 3px;
+          cursor: pointer;
+          margin-top: 0.6rem; 
+          transition: 0.2s ease;
+          &:hover {
+            background: #0056b3;
+            transition: 0.2s ease;
+          }
+        }
+      }
+
+      .search__container {
+        min-width: 25%;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        background-color: rgb(55, 58, 67);
+        padding: 5px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        color: white;
+        bottom: 25px;
+        .search__input {
+          max-width: 100%;
+          padding: 5px;
+          border: 1px solid #ccc;
+          border-radius: 3px;
+          outline: none;
+        }
+        .search__button {
+          padding: 5px 10px;
+          border: none;
+          background: #007bff;
+          color: white;
+          border-radius: 3px;
+          cursor: pointer;
+          margin-top: 5px;
+          transition: 0.2s ease;
+          &:hover {
+            background: #0056b3;
+            transition: 0.2s ease;
+          }
+        }
+        .search__result {
+          list-style: none;
+          padding: 0;
+          margin: 5px 0 0;
+          max-height: 150px;
+          overflow-y: auto;
+          width: 100%;
+          & li {
+            font-size: 13px;
+            padding: 5px;
+            border-bottom: 1px solid #ccc;
+            cursor: pointer;
+            &:hover {
+              background: rgb(67, 67, 68);
+            }
+          }
+        }
+      }
+
+      .directionBtn {
+        padding: 5px 10px;
+        border: none;
+        background: #28a745;
+        color: white;
+        border-radius: 3px;
+        cursor: pointer;
+        margin-top: 5px;
+        &:hover {
+          background: #218838;
+        }
+      }
+
+      @media screen and (max-width: 600px) {
+        body,
+        html {
+          .currentBtn {
+            position: absolute;
+            width: 6.7  rem;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+          }
+        }
+
+        .search__container {
+          min-width: 60%;
+          position: absolute;
+          bottom: 25px;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 1000;
+          display: flex;
+          flex-direction: column;
+          background-color: rgb(55, 58, 67);
+          padding: 5px;
+          border-radius: 5px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+          .search__input {
+            max-width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            outline: none;
+          }
+          .search__result {
+            list-style: none;
+            padding: 0;
+            margin: 5px 0 0;
+            max-height: 150px;
+            overflow-y: auto;
+            width: 100%;
+            & li {
+              font-size: 13px;
+              padding: 5px;
+              border-bottom: 1px solid #ccc;
+              cursor: pointer;
+              &:hover {
+                background: rgb(67, 67, 68);
+              }
+            }
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="search__container">
+      <input type="text" class="search__input" placeholder="Enter a location" />
+      <button class="search__button">Search</button>
+      <ul class="search__result"></ul>
+    </section>
+
+    <button class="currentBtn">Current Location</button>
+
+    <div id="map">
+      <a href="./home.html">
+        <div class="homepagee">
+          <button class="btn__homepagee" href="./home.html">
+            <div class="sign">
+              <svg viewBox="0 0 512 512">
+                <path
+                  d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"
+                ></path>
+              </svg>
+            </div>
+            <div class="text">Home</div>
+          </button>
+        </div>
+      </a>
+    </div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+    <script src="maps.js"></script>
+
+    <script>
+      var map, marker, routeControl;
+
+      function initializeMap(latitude, longitude) {
+        map = L.map("map").setView([latitude, longitude], 13);
+
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          attribution:
+            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        }).addTo(map);
+
+        // User current location marker
+        marker = L.marker([latitude, longitude]).addTo(map);
+        marker.bindPopup("<b>You are here!</b>").openPopup();
+
+        document
+          .querySelector(".currentBtn")
+          .addEventListener("click", function () {
+            if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(function (position) {
+                var lat = position.coords.latitude;
+                var lon = position.coords.longitude;
+                map.setView([lat, lon], 13);
+                marker.setLatLng([lat, lon]);
+                marker.bindPopup("<b>You are here!</b>").openPopup();
+              });
+            }
+          });
+
+        document
+          .querySelector(".search__button")
+          .addEventListener("click", function () {
+            var query = document.querySelector(".search__input").value;
+            if (query) {
+              var viewbox = `${longitude - 0.05},${latitude - 0.05},${
+                longitude + 0.05
+              },${latitude + 0.05}`;
+              var bounded = 1;
+
+              fetch(
+                `https://nominatim.openstreetmap.org/search?format=json&q=${query}&viewbox=${viewbox}&bounded=${bounded}`
+              )
+                .then((response) => response.json())
+                .then((data) => {
+                  var resultsList = document.querySelector(".search__result");
+                  resultsList.innerHTML = "";
+
+                  if (data.length > 0) {
+                    data.forEach((location) => {
+                      var listItem = document.createElement("li");
+                      listItem.textContent = location.display_name;
+                      listItem.addEventListener("click", function () {
+                        var lat = location.lat;
+                        var lon = location.lon;
+                        map.setView([lat, lon], 13);
+                        marker.setLatLng([lat, lon]);
+                        marker
+                          .bindPopup(
+                            `<b>${location.display_name}</b><br><button class="directionBtn">Directions</button>`
+                          )
+                          .openPopup();
+
+                        document
+                          .querySelector(".directionBtn")
+                          .addEventListener("click", function () {
+                            if (routeControl) {
+                              map.removeControl(routeControl);
+                            }
+                            routeControl = L.Routing.control({
+                              waypoints: [
+                                L.latLng(latitude, longitude),
+                                L.latLng(lat, lon),
+                              ],
+                              routeWhileDragging: true,
+                            }).addTo(map);
+                          });
+                        resultsList.innerHTML = "";
+                      });
+                      resultsList.appendChild(listItem);
+                    });
+                  } else {
+                    resultsList.innerHTML = "<li>No locations found.</li>";
+                  }
+                })
+                .catch((error) => {
+                  console.error("Error:", error);
+                });
+            }
+          });
+
+        map.on("click", function () {
+          document.querySelector(".search__result").innerHTML = "";
+        });
+
+        // function handleKeyPress(event) {
+        //     if (event.key === "Enter") {
+        //         document.querySelector('.search__result').innerHTML = '';
+        //     }
+        // }
+
+        // resultsList.addEventListener("keypress", handleKeyPress);
+
+        // Continuously update user's location
+        setInterval(function () {
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+              function (position) {
+                var lat = position.coords.latitude;
+                var lon = position.coords.longitude;
+                marker.setLatLng([lat, lon]);
+                marker.bindPopup("<b>You are here!</b>").openPopup();
+              },
+              function (error) {
+                console.error("Error retrieving location: ", error);
+              }
+            );
+          } else {
+            console.error("Geolocation not available");
+          }
+        }, 10000); // Update every 10 secs.
+      }
+
+      // Check if geolocation is available
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          function (position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+
+            initializeMap(latitude, longitude);
+          },
+          function (error) {
+            console.error("Error retrieving location: ", error);
+            initializeMap(51.505, -0.09);
+          }
+        );
+      } else {
+        console.error("Geolocation not available");
+        initializeMap(51.505, -0.09);
+      }
+    </script>
+  </body>
+</html>

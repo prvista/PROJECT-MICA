@@ -809,6 +809,123 @@ img.generated-image {
     display: none;
   }
 }
+.btn__homepagee {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition-duration: 0.3s;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  background-color: #1c81ec;
+  z-index: 9999999;
+  top: 650px;
+  left: 93%;
+}
+.btn__homepagee .sign {
+  width: 100%;
+  transition-duration: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.btn__homepagee .sign svg {
+  width: 17px;
+}
+.btn__homepagee .sign svg path {
+  fill: white;
+}
+.btn__homepagee .text {
+  position: absolute;
+  right: 0%;
+  width: 0%;
+  opacity: 0;
+  color: #ecf0f1;
+  font-size: 1.1em;
+  font-weight: 600;
+  transition-duration: 0.3s;
+  cursor: pointer;
+}
+.btn__homepagee:hover {
+  width: 100px;
+  border-radius: 30px;
+  transition-duration: 0.3s;
+  color: #007bff;
+  cursor: pointer;
+}
+.btn__homepagee:hover .sign {
+  width: 30%;
+  transition-duration: 0.3s;
+  padding-left: 12px;
+}
+.btn__homepagee:hover .text {
+  opacity: 1;
+  width: 70%;
+  transition-duration: 0.3s;
+  padding-right: 10px;
+}
+.btn__homepagee:active {
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (max-width: 730px) {
+  .btn__homepagee {
+    left: 85%;
+    cursor: pointer;
+  }
+  .btn__homepagee .sign {
+    width: 100%;
+    transition-duration: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .btn__homepagee .sign svg {
+    width: 17px;
+  }
+  .btn__homepagee .sign svg path {
+    fill: white;
+  }
+  .btn__homepagee .text {
+    position: absolute;
+    right: 0%;
+    width: 0%;
+    opacity: 0;
+    color: #ecf0f1;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition-duration: 0.3s;
+    cursor: pointer;
+  }
+  .btn__homepagee:hover {
+    width: 100px;
+    border-radius: 30px;
+    transition-duration: 0.3s;
+    color: #007bff;
+    cursor: pointer;
+  }
+  .btn__homepagee:hover .sign {
+    width: 30%;
+    transition-duration: 0.3s;
+    padding-left: 12px;
+  }
+  .btn__homepagee:hover .text {
+    opacity: 1;
+    width: 70%;
+    transition-duration: 0.3s;
+    padding-right: 10px;
+  }
+  .btn__homepagee:active {
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+  }
+}
 .about {
   font-family: "Inter", sans-serif;
   font-style: normal;
