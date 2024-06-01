@@ -27,6 +27,7 @@
                 .button__tryMica{
                     &__wrapper{
                         margin-top: 2.8rem;
+                        cursor: pointer;
                         a{
                             text-decoration: none;
                             padding: 1rem 2rem;
@@ -266,3 +267,315 @@
 .appointment-inputs input[type="time"] {
   margin-bottom: 5px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+$break-img: 1400px;
+
+
+.medtips{
+    background: #000014;
+    &_wrapper{
+     display: flex;
+     flex-direction: column;
+     gap: 2rem;
+     
+         .try_med{
+             max-width: 70rem;
+             display: flex;
+             flex-direction: column;
+             justify-content: center;
+             gap: 2rem;
+             margin-left: 3rem;
+             margin-right: 3rem;
+             padding: 3rem;
+             background-color: #000023;
+             border-radius: 20px;
+             
+             
+             .logo{
+                 justify-content: center;
+                 display: flex;
+                 
+                 img{
+                     max-width: 20rem;
+                 
+                     
+                 }
+             }
+             .sample{
+                 display: flex;
+                 margin: 0 auto;
+                 max-width: 40rem;
+                 justify-content: center;
+
+                 img{
+                  width: 70%;
+                 }
+             }
+             .advertise{
+                 display: flex;
+                 flex-direction: column;
+                 margin: 0 auto;
+                 gap: 2rem;
+                 padding: 1rem;
+                 
+                 .try_txt{
+                     max-width: 45rem;
+                     
+                     p{
+                         text-align: center;
+                         color: white;
+                         font-size: 2.6rem;
+                         font-weight: 600;
+                     }
+                 }
+                 .try_btn{
+                     margin: 0 auto;
+                     background-color: #037dff;
+                     border-radius: 20px;
+                     display: flex;
+                     padding: 1rem;
+                     max-width: 22rem;
+                     transition: 0.3s ease;
+                     
+                     a{
+                         align-items: center;
+                         display: flex;
+                         gap: 1rem;
+                      text-decoration: none;
+                      font-weight: 6  00;
+
+                         p{
+                             color: white;
+                         }
+                         i{
+                             
+                             color: white;
+                         }
+                     }
+
+                     &:hover{
+                      transition: 0.3s ease;
+                      background: #0063ce;
+                     }
+             }
+             }
+         }
+ 
+         .med{
+             display: flex;
+             flex-direction: column;
+             gap: 2rem;
+             margin-left: 3rem;
+             margin-right: 3rem;
+             
+             &_tips{
+                 max-width: 70rem;
+                 display: flex;
+                 flex-direction: column;  
+                 gap: 2rem;
+                //  padding: 2rem;
+                 background-color: #000023;
+                 border-radius: 20px;
+                 margin: 0 auto;
+             }
+ 
+             &_title{
+                 display: flex;
+                 justify-content: center;
+                 h1{
+                        color: white;
+                        font-size: 4rem;
+                        text-align: center;
+                        padding-top: 3rem;
+                 }
+             }
+ 
+             &_intro{
+                 display: flex;
+                 justify-content: center;
+                 p{
+                     color: white;
+                     font-size: 2rem;
+                     text-align: center;
+                 }   
+             }
+ 
+ 
+             &_mobile{
+                 background-color: #000023;
+                 max-width: 70rem;
+                 display: flex;
+                 flex-direction: column;
+                 margin: 0 auto;
+                 gap: 2rem;
+                 padding: 3rem;
+                 gap: 2rem;
+                 border-radius: 20px;
+
+
+ 
+                 
+                 .mobile_title{
+                     display: flex;
+                     justify-content: center;
+                     h1{
+                        color: white;
+                        font-size: 2.9rem;
+                        text-align: center;
+                     }
+                 }
+                 .mobile_txt{
+                     display: flex;
+                     justify-content: center;
+                     p{
+                         color: white;
+                         font-size: 2rem;
+                         text-align: center;
+                     }
+                 }
+                 .mobile_sample{
+                     display: flex;
+                     justify-content: center;
+                     
+                     img{
+                         min-width: 20rem;
+                     }
+                 }
+             }
+ 
+             .medical_tips{
+                 display: flex;
+                 flex-direction: column;
+                 border-radius: 2rem;
+                 min-width: 30rem;
+                 
+                 .med_genre{
+                     padding: 1.4rem;
+                     border-style: solid;
+                     border-color: black;
+                     border-width: 1px;
+                     background-color: #070763;
+                     cursor: pointer;
+                     h1{
+                         color: white;
+                         display: flex;
+                         justify-content: space-between;
+                         font-size: 2rem;
+                         i{
+                             display: flex;
+                             transition: 1s ease;
+                             justify-content: flex-end;
+                             align-items: center;
+                             &.open{
+                                 transform: rotate(180deg);
+                                 transition: 1s ease;
+                             }
+                         }
+                     }
+ 
+                 }
+                 .tips{
+                     max-height: 0px;
+                     overflow: hidden;
+                     transition: 0.5s ease;
+                     p{  
+                         transition: 0.1s ease;
+                         padding-right: 1rem;
+                     }
+                     &.open{
+                         border-style: solid;
+                         border-color: black;
+                         border-width: 1px;
+                         background-color:#037dff;
+                         color: white;
+                         padding-left: 1.5rem;
+                         padding-top: 1rem;
+                         padding-bottom: 1rem;
+                         max-height: max-content;
+                         overflow: unset;
+                         transition: 0.3s ease;
+                         max-width: 120rem;
+                     }
+                     
+                 }
+             }
+ 
+         
+         }
+ 
+    }
+ 
+    @include mediaQuery($break-md){
+         .try_med{
+             flex-direction: unset;
+             max-width: unset;
+             align-items: center;
+             gap: unset;
+             margin-left: 7.5rem;
+            margin-right: 7.5rem;
+            margin-top: 2rem;
+             .logo{
+                 display: none;
+                 
+             }           
+             
+         }
+         
+    }
+ 
+    @include mediaQuery($break-lg){
+     .med{
+         justify-content: center;
+         flex-direction:row;
+         gap: 3rem;
+         &_mobile{
+             max-width: 55rem;
+         }
+         &_tips{
+             gap: 3 rem;
+             padding-left:8rem ;
+             padding-right:8rem ;
+             
+         }
+         
+     }
+ 
+    }
+    @include mediaQuery($break-img){
+     .try_med{
+         .sample{     
+             max-width: 90rem;
+         }
+     }
+ 
+    }
+ }
+
+
+ @media screen and (max-width: 800px){
+  .mobile_sample{
+    
+    img{
+        display: none;
+    }
+}
+ }
+
+
+
+
+ .right{
+  margin-right: 0;
+ }

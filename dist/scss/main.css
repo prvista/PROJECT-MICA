@@ -809,6 +809,12 @@ img.generated-image {
     display: none;
   }
 }
+#map .map__btn__wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 2.5rem;
+}
+
 .btn__homepagee {
   display: flex;
   align-items: center;
@@ -824,8 +830,7 @@ img.generated-image {
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
   background-color: #1c81ec;
   z-index: 9999999;
-  top: 650px;
-  left: 93%;
+  margin-right: -2.1rem;
 }
 .btn__homepagee .sign {
   width: 100%;
@@ -874,58 +879,6 @@ img.generated-image {
   box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
 }
 
-@media screen and (max-width: 730px) {
-  .btn__homepagee {
-    left: 85%;
-    cursor: pointer;
-  }
-  .btn__homepagee .sign {
-    width: 100%;
-    transition-duration: 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-  }
-  .btn__homepagee .sign svg {
-    width: 17px;
-  }
-  .btn__homepagee .sign svg path {
-    fill: white;
-  }
-  .btn__homepagee .text {
-    position: absolute;
-    right: 0%;
-    width: 0%;
-    opacity: 0;
-    color: #ecf0f1;
-    font-size: 1.1em;
-    font-weight: 600;
-    transition-duration: 0.3s;
-    cursor: pointer;
-  }
-  .btn__homepagee:hover {
-    width: 100px;
-    border-radius: 30px;
-    transition-duration: 0.3s;
-    color: #007bff;
-    cursor: pointer;
-  }
-  .btn__homepagee:hover .sign {
-    width: 30%;
-    transition-duration: 0.3s;
-    padding-left: 12px;
-  }
-  .btn__homepagee:hover .text {
-    opacity: 1;
-    width: 70%;
-    transition-duration: 0.3s;
-    padding-right: 10px;
-  }
-  .btn__homepagee:active {
-    box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
-  }
-}
 .about {
   font-family: "Inter", sans-serif;
   font-style: normal;
@@ -951,6 +904,7 @@ img.generated-image {
 }
 .about__wrapper .about__details__wrapper .button__tryMica__wrapper {
   margin-top: 2.8rem;
+  cursor: pointer;
 }
 .about__wrapper .about__details__wrapper .button__tryMica__wrapper a {
   text-decoration: none;
@@ -1106,4 +1060,251 @@ img.generated-image {
 .appointment-inputs input[type=date],
 .appointment-inputs input[type=time] {
   margin-bottom: 5px;
+}
+
+.medtips {
+  background: #000014;
+}
+.medtips_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.medtips_wrapper .try_med {
+  max-width: 70rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
+  padding: 3rem;
+  background-color: #000023;
+  border-radius: 20px;
+}
+.medtips_wrapper .try_med .logo {
+  justify-content: center;
+  display: flex;
+}
+.medtips_wrapper .try_med .logo img {
+  max-width: 20rem;
+}
+.medtips_wrapper .try_med .sample {
+  display: flex;
+  margin: 0 auto;
+  max-width: 40rem;
+  justify-content: center;
+}
+.medtips_wrapper .try_med .sample img {
+  width: 70%;
+}
+.medtips_wrapper .try_med .advertise {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  gap: 2rem;
+  padding: 1rem;
+}
+.medtips_wrapper .try_med .advertise .try_txt {
+  max-width: 45rem;
+}
+.medtips_wrapper .try_med .advertise .try_txt p {
+  text-align: center;
+  color: white;
+  font-size: 2.6rem;
+  font-weight: 600;
+}
+.medtips_wrapper .try_med .advertise .try_btn {
+  margin: 0 auto;
+  background-color: #037dff;
+  border-radius: 20px;
+  display: flex;
+  padding: 1rem;
+  max-width: 22rem;
+  transition: 0.3s ease;
+}
+.medtips_wrapper .try_med .advertise .try_btn a {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+  text-decoration: none;
+  font-weight: 6 0;
+}
+.medtips_wrapper .try_med .advertise .try_btn a p {
+  color: white;
+}
+.medtips_wrapper .try_med .advertise .try_btn a i {
+  color: white;
+}
+.medtips_wrapper .try_med .advertise .try_btn:hover {
+  transition: 0.3s ease;
+  background: #0063ce;
+}
+.medtips_wrapper .med {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
+.medtips_wrapper .med_tips {
+  max-width: 70rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background-color: #000023;
+  border-radius: 20px;
+  margin: 0 auto;
+}
+.medtips_wrapper .med_title {
+  display: flex;
+  justify-content: center;
+}
+.medtips_wrapper .med_title h1 {
+  color: white;
+  font-size: 4rem;
+  text-align: center;
+  padding-top: 3rem;
+}
+.medtips_wrapper .med_intro {
+  display: flex;
+  justify-content: center;
+}
+.medtips_wrapper .med_intro p {
+  color: white;
+  font-size: 2rem;
+  text-align: center;
+}
+.medtips_wrapper .med_mobile {
+  background-color: #000023;
+  max-width: 70rem;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  gap: 2rem;
+  padding: 3rem;
+  gap: 2rem;
+  border-radius: 20px;
+}
+.medtips_wrapper .med_mobile .mobile_title {
+  display: flex;
+  justify-content: center;
+}
+.medtips_wrapper .med_mobile .mobile_title h1 {
+  color: white;
+  font-size: 2.9rem;
+  text-align: center;
+}
+.medtips_wrapper .med_mobile .mobile_txt {
+  display: flex;
+  justify-content: center;
+}
+.medtips_wrapper .med_mobile .mobile_txt p {
+  color: white;
+  font-size: 2rem;
+  text-align: center;
+}
+.medtips_wrapper .med_mobile .mobile_sample {
+  display: flex;
+  justify-content: center;
+}
+.medtips_wrapper .med_mobile .mobile_sample img {
+  min-width: 20rem;
+}
+.medtips_wrapper .med .medical_tips {
+  display: flex;
+  flex-direction: column;
+  border-radius: 2rem;
+  min-width: 30rem;
+}
+.medtips_wrapper .med .medical_tips .med_genre {
+  padding: 1.4rem;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  background-color: #070763;
+  cursor: pointer;
+}
+.medtips_wrapper .med .medical_tips .med_genre h1 {
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  font-size: 2rem;
+}
+.medtips_wrapper .med .medical_tips .med_genre h1 i {
+  display: flex;
+  transition: 1s ease;
+  justify-content: flex-end;
+  align-items: center;
+}
+.medtips_wrapper .med .medical_tips .med_genre h1 i.open {
+  transform: rotate(180deg);
+  transition: 1s ease;
+}
+.medtips_wrapper .med .medical_tips .tips {
+  max-height: 0px;
+  overflow: hidden;
+  transition: 0.5s ease;
+}
+.medtips_wrapper .med .medical_tips .tips p {
+  transition: 0.1s ease;
+  padding-right: 1rem;
+}
+.medtips_wrapper .med .medical_tips .tips.open {
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  background-color: #037dff;
+  color: white;
+  padding-left: 1.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  max-height: -moz-max-content;
+  max-height: max-content;
+  overflow: unset;
+  transition: 0.3s ease;
+  max-width: 120rem;
+}
+@media screen and (min-width: 760px) {
+  .medtips .try_med {
+    flex-direction: unset;
+    max-width: unset;
+    align-items: center;
+    gap: unset;
+    margin-left: 7.5rem;
+    margin-right: 7.5rem;
+    margin-top: 2rem;
+  }
+  .medtips .try_med .logo {
+    display: none;
+  }
+}
+@media screen and (min-width: 980px) {
+  .medtips .med {
+    justify-content: center;
+    flex-direction: row;
+    gap: 3rem;
+  }
+  .medtips .med_mobile {
+    max-width: 55rem;
+  }
+  .medtips .med_tips {
+    gap: 3 rem;
+    padding-left: 8rem;
+    padding-right: 8rem;
+  }
+}
+@media screen and (min-width: 1400px) {
+  .medtips .try_med .sample {
+    max-width: 90rem;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .mobile_sample img {
+    display: none;
+  }
+}
+.right {
+  margin-right: 0;
 }/*# sourceMappingURL=main.css.map */

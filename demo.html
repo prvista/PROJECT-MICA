@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo Page</title>
+    <link rel="stylesheet" href="./dist/scss/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+    />
+    <link rel="icon" type="image/png" href="dist/components/img/MICA-tab.png" />
+    <script
+      src="https://kit.fontawesome.com/29865ec48b.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <style>
+      * {
+        scroll-behavior: smooth;
+      }
+
+      .demo {
+        font-family: "Inter", sans-serif;
+        font-style: normal;
+      }
+
+      .demo__wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-top: 1.5rem;
+      }
+
+      .demo__details {
+        color: rgb(227, 227, 227);
+        text-align: center;
+        width: 60%;
+      }
+
+      .demo__details__wrapper h2 {
+        margin-bottom: 0.5rem;
+        font-size: 3rem;
+      }
+
+      .demo__details__wrapper h3 {
+        font-size: 1.6rem;
+        color: #cecece;
+      }
+
+      .button__tryMica__wrapper {
+        margin-top: 2.8rem;
+        padding-bottom: 28rem;
+      }
+
+      .button__tryMica__wrapper a {
+        text-decoration: none;
+        padding: 1rem 2rem;
+        background: #007bff;
+        border-radius: 1rem;
+        color: white;
+        font-weight: 600;
+        align-items: center;
+        transition: 0.3s ease;
+        font-size: 1.4rem;
+      }
+
+      .button__tryMica__wrapper a i {
+        font-size: 1.4rem;
+      }
+
+      .button__tryMica__wrapper a:hover {
+        transition: 0.3s ease;
+        background: #0073ee;
+      }
+
+      .demo__guide__wrapper {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .demo__guide__title h2 {
+        padding-top: 3rem;
+        margin-bottom: 3.5rem;
+        font-size: 3.5rem;
+        color: rgb(216, 216, 216);
+      }
+
+      .demo__guide__step__wrapper {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .demo__guide__item {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        padding-bottom: 14rem;
+      }
+
+      .step__title {
+        margin-bottom: 1.5rem;
+        background-color: #007bff;
+        border-radius: 8px;
+        padding: 1rem;
+        width: 60%;
+      }
+
+      .step__title h3 {
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+        color: white;
+      }
+
+      .step__gif img {
+        width: 90%;
+        border-radius: 5px;
+      }
+
+      .step__description {
+        width: 70%;
+        margin-top: 1rem;
+      }
+
+      .step__description p {
+        color: #e9e9e9;
+      }
+
+      .demo__surprise {
+        padding-top: 10rem;
+      }
+
+      .demo__surprise__wrapper {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+      }
+
+      .demo__surprise__title h3 {
+        font-size: 2.8rem;
+        font-weight: 800;
+        color: rgb(216, 216, 216);
+        padding-bottom: 4rem;
+      }
+
+      .demo__surprise__reveal {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        padding-bottom: 12rem;
+      }
+
+      .demo__surprise__reveal__title {
+        margin-bottom: 2.5rem;
+        background-color: #007bff;
+        border-radius: 8px;
+        padding: 1rem;
+        width: 65%;
+      }
+
+      .demo__surprise__reveal__title h3 {
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+        color: white;
+        font-size: 2.5rem;
+      }
+
+      .demo__surprise__reveal__desc {
+        width: 70%;
+      }
+
+      .demo__surprise__reveal__desc p {
+        font-weight: 600;
+        color: #e9e9e9;
+      }
+
+      .demo__surprise__speech__title__big h3 {
+        padding-bottom: 4rem;
+        font-size: 2.8rem;
+        color: rgb(216, 216, 216);
+      }
+
+      .demo__surprise__speech__title__small {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        padding-bottom: 2.5rem;
+      }
+
+      .demo__surprise__speech__title__small h3 {
+        margin-bottom: 2.5rem;
+        background-color: #007bff;
+        color: white;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+        border-radius: 8px;
+        padding: 1rem;
+        width: 85%;
+      }
+
+      .demo__surprise__speech__gif img {
+        width: 90%;
+        border-radius: 5px;
+      }
+
+      .demo__surprise__speech__desc {
+        width: 70%;
+        margin-top: 1rem;
+        padding-bottom: 4rem;
+      }
+
+      .demo__surprise__speech__desc p {
+        font-weight: 600;
+        color: #e9e9e9;
+      }
+
+      @media screen and (min-width: 700px) {
+        .demo__guide__title h2 {
+          font-size: 5rem;
+        }
+
+        .demo__guide__item {
+          padding-bottom: 17rem;
+        }
+
+        .step__title {
+          width: 40%;
+          margin-bottom: 4rem;
+          padding: 1.8rem;
+        }
+
+        .step__title h3 {
+          font-size: 2.8rem;
+        }
+
+        .step__gif img {
+          width: 60%;
+        }
+
+        .step__description {
+          margin-top: 2rem;
+          width: 50%;
+        }
+
+        .step__description p {
+          font-size: 2rem;
+        }
+
+        .demo__surprise__title h3 {
+          font-size: 5rem;
+          padding-bottom: 5rem;
+        }
+
+        .demo__surprise__reveal {
+          padding-bottom: 20rem;
+        }
+
+        .demo__surprise__reveal__title {
+          padding: 1.8rem;
+          margin-bottom: 4rem;
+          width: 50%;
+        }
+
+        .demo__surprise__reveal__title h3 {
+          font-size: 2.8rem;
+        }
+
+        .demo__surprise__reveal__desc {
+          width: 50%;
+        }
+
+        .demo__surprise__reveal__desc p {
+          font-weight: 600;
+          font-size: 2rem;
+        }
+
+        .demo__surprise__speech__title__big h3 {
+          font-size: 4rem;
+          padding-bottom: 3rem;
+        }
+
+        .demo__surprise__speech__title__small {
+          width: 46%;
+        }
+
+        .demo__surprise__speech__title__small h3 {
+          padding: 1.8rem;
+          font-size: 2.4rem;
+        }
+
+        .demo__surprise__speech__gif img {
+          width: 60%;
+        }
+
+        .demo__surprise__speech__desc {
+          width: 50%;
+          padding-bottom: 2rem;
+        }
+
+        .demo__surprise__speech__desc p {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body class="height-limit">
+    <header class="header relative">
+      <div class="container">
+        <div class="header__wrapper">
+          <div class="branding">
+            <div class="branding__wrapper">
+              <img src="./dist/components/img/MICA-lightblue_logo.png" alt="" />
+            </div>
+          </div>
+
+          <a href="./home.html">
+            <div class="homepage">
+              <button class="btn__homepagee right" href="./home.html">
+                <div class="sign">
+                  <svg viewBox="0 0 512 512">
+                    <path
+                      d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"
+                    ></path>
+                  </svg>
+                </div>
+
+                <div class="text">Home</div>
+              </button>
+            </div>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <div class="banner__mica">
+      <div class="banner__mica__wrapper">
+        <div class="banner__mica__text">
+          <div class="banner__mica__text__wrapper">
+            <h4>Demo Page</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="demo">
+      <div class="container">
+        <div class="demo__wrapper">
+          <div class="demo__details">
+            <div class="demo__details__wrapper">
+              <h2>MICA 101: A Beginner's Guide to Our Chatbot</h2>
+              <h3>
+                Welcome to our Beginner's Guide to MICA! Here you'll discover
+                everything you need to know to navigate and maximize your
+                experience with MICA, our Medical Information Chatbot Assistant.
+              </h3>
+            </div>
+          </div>
+
+          <div class="button__tryMica">
+            <div class="button__tryMica__wrapper">
+              <a href="#start"
+                >LET'S GET STARTED <i class="fa-solid fa-arrow-down"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="demo__guide">
+            <div class="demo__guide__wrapper">
+              <div class="demo__guide__title">
+                <div class="demo__guide__title_wrapper">
+                  <h2 id="start">LET'S GET STARTED!</h2>
+                </div>
+              </div>
+
+              <div class="demo__guide__step">
+                <div class="demo__guide__step__wrapper">
+                  <div class="demo__guide__item">
+                    <div class="step__title">
+                      <h3>ACCESS THE CHAT PAGE</h3>
+                    </div>
+
+                    <div class="step__gif">
+                      <img
+                        src="./dist/components/img/talking_mica.gif"
+                        alt="hello"
+                        class="talking-mica"
+                        style="display: none"
+                      />
+                    </div>
+
+                    <div class="step__description">
+                      <p>
+                        You can start interacting with MICA by clicking the
+                        "Start Chatting" button on the homepage.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="demo__guide__item">
+                    <div class="step__title">
+                      <h3>COMPOSE YOUR MESSAGE</h3>
+                    </div>
+
+                    <div class="step__gif">
+                      <img
+                        src="./dist/components/img/talking_mica.gif"
+                        alt="hello"
+                        class="talking-mica"
+                        style="display: none"
+                      />
+                    </div>
+
+                    <div class="step__description">
+                      <p>
+                        Type your message or query into the chat input box. You
+                        can ask questions on illnesses, symptoms, or advice on
+                        wellness and general well-being.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="demo__guide__item">
+                    <div class="step__title">
+                      <h3>SEND YOUR MESSAGE</h3>
+                    </div>
+
+                    <div class="step__gif">
+                      <img
+                        src="./dist/components/img/talking_mica.gif"
+                        alt="hello"
+                        class="talking-mica"
+                        style="display: none"
+                      />
+                    </div>
+
+                    <div class="step__description">
+                      <p>
+                        After composing your message, press the "Send" button
+                        (illustrated as paper plane) or hit Enter button to
+                        submit your message to MICA.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="demo__surprise">
+                <div class="demo__surprise__wrapper">
+                  <div class="demo__surprise__title">
+                    <h3>EXPERIENCE A BONUS FEATURE!</h3>
+                  </div>
+
+                  <div class="demo__surprise__reveal">
+                    <div class="demo__surprise__reveal__title">
+                      <h3>SPEECH-TO-TEXT MESSAGE!</h3>
+                    </div>
+
+                    <div class="demo__surprise__reveal__desc">
+                      <p>
+                        MICA is perfectly capable of processing voice messages
+                        and providing concise and accurate responses based on
+                        the user’s voice query.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="demo__surprise__speech__title__big">
+                    <h3>HOW DO I "TALK" TO MICA?</h3>
+                  </div>
+
+                  <div class="demo__surprise__speech__title__small">
+                    <h3>USE THE SPEECH-TO-TEXT FEATURE</h3>
+                  </div>
+
+                  <div class="demo__surprise__speech__gif">
+                    <img
+                      src="./dist/components/img/talking_mica.gif"
+                      alt="hello"
+                      class="talking-mica"
+                      style="display: none"
+                    />
+                  </div>
+
+                  <div class="demo__surprise__speech__desc">
+                    <p>
+                      To use the Speech-to-Text feature, simply click the “Mic”
+                      button once then speak clearly your message to MICA. A few
+                      seconds after you finish speaking, the speech is then
+                      converted to text and sent to MICA.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

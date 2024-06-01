@@ -1,13 +1,16 @@
 function sendMessage() {
   var sound = document.getElementById("messageSound");
-  sound.play(); 
+  sound.play();
   var userInput = document.getElementById("user-input").value.trim();
   if (userInput !== "") {
-      appendMessage("user", userInput);
-      document.getElementById("user-input").value = "";
-      fetchResponse(userInput);
+    appendMessage("user", userInput);
+    document.getElementById("user-input").value = "";
+    fetchResponse(userInput);
   }
 }
+
+
+
 
 
 
@@ -18,38 +21,44 @@ function appendMessage(sender, message, imageUrl) {
   var chatContainer = document.getElementById("chat-container");
   var messageContainer = document.createElement("div");
   var messageElement = document.createElement("div");
-  var profilePicture = document.createElement("img"); 
-  var timeElement = document.createElement("div")
+  var profilePicture = document.createElement("img");
+  var timeElement = document.createElement("div");
 
   messageContainer.classList.add("message-container");
   messageElement.textContent = message;
 
   if (sender === "bot") {
-      messageElement.classList.add("bot-message");
-      if (imageUrl) {
-          var image = document.createElement("img");
-          image.src = imageUrl;
-          messageContainer.appendChild(messageElement);
-          messageContainer.appendChild(image); 
-      } else {
-          messageContainer.appendChild(messageElement); 
-      }
-      // Add the current time below the bot's message
-      timeElement.textContent = getCurrentTime();
-      timeElement.classList.add("message-time");
-      messageContainer.appendChild(timeElement);
-  } else {
-      messageElement.classList.add("user-message");
+    messageElement.classList.add("bot-message");
+    if (imageUrl) {
+      var image = document.createElement("img");
+      image.src = imageUrl;
       messageContainer.appendChild(messageElement);
-      // Add the profile picture below the user's message
-      profilePicture.src = "MICA_chathead4.png"; // Set the profile picture source
-      profilePicture.classList.add("profile-picture");
-      messageContainer.appendChild(profilePicture); 
+      messageContainer.appendChild(image);
+    } else {
+      messageContainer.appendChild(messageElement);
+    }
+    // Add the current time below the bot's message
+    timeElement.textContent = getCurrentTime();
+    timeElement.classList.add("message-time");
+    messageContainer.appendChild(timeElement);
+  } else {
+    messageElement.classList.add("user-message");
+    messageContainer.appendChild(messageElement);
+    // Add the profile picture below the user's message
+    profilePicture.src = "MICA_chathead4.png"; // Set the profile picture source
+    profilePicture.classList.add("profile-picture");
+    messageContainer.appendChild(profilePicture);
   }
 
   chatContainer.appendChild(messageContainer);
   chatContainer.scrollTop = chatContainer.scrollHeight;
 }
+
+
+
+
+
+
 
 
 
@@ -65,11 +74,14 @@ function getCurrentTime() {
   var minutes = now.getMinutes();
   var ampm = hours >= 12 ? "PM" : "AM";
   hours = hours % 12;
-  hours = hours ? hours : 12; 
+  hours = hours ? hours : 12;
   minutes = minutes < 10 ? "0" + minutes : minutes;
   var timeString = hours + ":" + minutes + " " + ampm;
   return timeString;
 }
+
+
+
 
 
 
@@ -83,32 +95,35 @@ function fetchResponse(message) {
   xhr.open("POST", "/get_response", true);
   xhr.setRequestHeader("Content-Type", "application/json");
   xhr.onreadystatechange = function () {
-      if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-          var data = JSON.parse(xhr.responseText);
-          if (data.appointment_prompt) {
-              // Show appointment message with inputs
-              var chatContainer = document.getElementById("chat-container");
-              var messageContainer = document.createElement("div");
-              messageContainer.classList.add("message-container", "bot-message");
-              messageContainer.innerHTML = `
-                  <div class="message">${data.response}</div>
-                  <label for="appointment-date">Choose a date:</label>
-                  <input type="date" id="appointment-date" name="appointment-date">
-                  <label for="appointment-time">Choose a time:</label>
-                  <input type="time" id="appointment-time" name="appointment-time">
-                  <button onclick="scheduleAppointment()">Schedule Appointment</button>
-              `;
-              chatContainer.appendChild(messageContainer);
-          } else {
-              // Regular chat message
-              appendBotMessage(data.response, data.image);
-              displayMedicineRecommendation(data.medicine_recommendation); 
-              speakBotMessage(data.response); 
-          }
+    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+      var data = JSON.parse(xhr.responseText);
+      if (data.appointment_prompt) {
+        // Show appointment message with inputs
+        var chatContainer = document.getElementById("chat-container");
+        var messageContainer = document.createElement("div");
+        messageContainer.classList.add("message-container", "bot-message");
+        messageContainer.innerHTML = `
+          <div class="message">${data.response}</div>
+          <label for="appointment-date">Choose a date:</label>
+          <input type="date" id="appointment-date" name="appointment-date">
+          <label for="appointment-time">Choose a time:</label>
+          <input type="time" id="appointment-time" name="appointment-time">
+          <button onclick="scheduleAppointment()">Schedule Appointment</button>
+        `;
+        chatContainer.appendChild(messageContainer);
+      } else {
+        // Regular chat message
+        appendBotMessage(data.response, data.image);
+        displayMedicineRecommendation(data.medicine_recommendation);
+        speakBotMessage(data.response);
       }
+    }
   };
   xhr.send(JSON.stringify({ message: message }));
 }
+
+
+
 
 
 
@@ -130,7 +145,7 @@ function appendBotMessage(message, imageUrl) {
   messageElement.classList.add("message");
   timeElement.classList.add("message-time");
   imageContainer.classList.add("image-container");
-  imageContainer.style.width = "40%"; // Set width to 50%
+  imageContainer.style.width = "40%"; // Set width to 40%
 
   // Split the message into lines and create separate divs for each line
   var lines = message.split('\n');
@@ -174,9 +189,13 @@ function appendBotMessage(message, imageUrl) {
 
 
 
+
+
 function displayMedicineRecommendation(medicines) {
   var medicineRecommendationContent = document.getElementById("medicine-recommendation-content");
+  var recoBadge = document.getElementById("reco-badge");
   medicineRecommendationContent.innerHTML = ""; // Clear previous recommendations
+
   if (medicines && medicines.length > 0) {
     medicines.forEach(function (medicine, index) {
       var medicineElement = document.createElement("div");
@@ -188,10 +207,21 @@ function displayMedicineRecommendation(medicines) {
         medicineRecommendationContent.appendChild(document.createTextNode(" "));
       }
     });
+    recoBadge.textContent = medicines.length; // Update badge count
   } else {
     medicineRecommendationContent.textContent = "No medicine recommendation available.";
+    recoBadge.textContent = "0"; // Reset badge count
   }
 }
+
+
+
+
+
+
+
+
+
 
 
 
@@ -225,11 +255,25 @@ function startSpeechRecognition() {
 
 
 
+
+
+
+
 function speakBotMessage(message) {
   // Remove emoji from the message
   var textOnlyMessage = message.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, '');
 
+  var gifElement = document.querySelector(".talking-mica"); // Select the GIF element
   var speech = new SpeechSynthesisUtterance(textOnlyMessage);
+  
+  speech.onstart = function() {
+    gifElement.style.display = "block"; // Show GIF when TTS starts
+  };
+  
+  speech.onend = function() {
+    gifElement.style.display = "none"; // Hide GIF when TTS ends
+  };
+  
   speechSynthesis.speak(speech);
 }
 
@@ -261,11 +305,6 @@ function handleKeyPress(event) {
 
 
 
-
-
-
-
-
 function handlePromptClick(prompt) {
   document.getElementById("user-input").value = prompt;
   sendMessage(); 
@@ -289,28 +328,4 @@ micButton.addEventListener("click", function() {
   startSpeechRecognition(); 
 });
 
-setInterval(changeText, 4000); 
-
-
-function displayMedicineRecommendation(medicines) {
-  var medicineRecommendationContent = document.getElementById("medicine-recommendation-content");
-  var recoBadge = document.getElementById("reco-badge");
-  medicineRecommendationContent.innerHTML = ""; // Clear previous recommendations
-
-  if (medicines && medicines.length > 0) {
-    medicines.forEach(function (medicine, index) {
-      var medicineElement = document.createElement("div");
-      medicineElement.textContent = medicine;
-      medicineRecommendationContent.appendChild(medicineElement);
-      
-      // Add small space between medicine recommendations, except for the last one
-      if (index < medicines.length - 1) {
-        medicineRecommendationContent.appendChild(document.createTextNode(" "));
-      }
-    });
-    recoBadge.textContent = medicines.length; // Update badge count
-  } else {
-    medicineRecommendationContent.textContent = "No medicine recommendation available.";
-    recoBadge.textContent = "0"; // Reset badge count
-  }
-}
+setInterval(changeText, 4000);
