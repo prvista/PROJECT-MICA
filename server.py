@@ -4,6 +4,25 @@ import difflib
 import speech_recognition as sr
 import random
 import datetime
+import pyttsx3
+import traceback
+
+
+engine = pyttsx3.init()
+
+def speak(text):
+    try:
+        # Use the text-to-speech engine to speak the given text
+        engine.say(text)
+        engine.runAndWait()
+    except Exception as e:
+        # Log any exceptions that occur during text-to-speech processing
+        print("Error occurred during text-to-speech processing:")
+        print(traceback.format_exc())
+
+# Example usage of the speak function
+text = "Hello, how can I help you?"
+speak(text)
 
 
 dataset = [
@@ -23,11 +42,10 @@ dataset = [
     (["Hi"], "Hello! How can I help you?👋", "z-img/MICA_hello.png", [""]),
     (["Hello"], "Hello! How can I help you?👋", "z-img/MICA_hello.png", [""]),
     
-    
-    
-    #Headache
+
     (["prevent headache", "headache prevent", "prevention for headache", "headache prevention"], "To prevent headaches, ensure you stay hydrated, maintain a healthy diet, get regular exercise, manage stress, and practice good posture. ", "z-img/biogesic.jpg", ["Ibuprofen", "Acetaminophen", "Biogesic"]),
     (["treat headache", "headache treat", "treatment for headache", "headache treatment"], "To treat a headache, you can try over-the-counter pain relievers like ibuprofen or biogesic, rest in a quiet and dark room, apply a cold compress to your forehead, and practice relaxation techniques such as deep breathing or meditation.", "z-img/biogesic.jpg", ["Ibuprofen", "Acetaminophen","Biogesic"]),
+
     (["burns prevent", "prevent burns", "prevention for burns", "burn prevention"], "Always use caution when handling hot objects or liquids. Keep hot objects out of reach of children. Install smoke alarms and have a fire extinguisher at home. Treat minor burns with cool running water and cover with a clean, dry cloth.", "z-img/prevent/prevent-burn.gif", []),
     (["burns treat", "treat burns", "treatment for burns", "burns treatment"], "For minor burns, run cool water over the affected area for at least 20 minutes. Do not apply ice. For severe burns, seek medical help immediately.",  "z-img/prevent/treat-burns.jpg", []),
     # Cuts and Wounds
@@ -37,7 +55,7 @@ dataset = [
     (["sprain prevent", "prevent sprain", "prevention for sprain", "sprain prevention"], "Warm up before exercising or engaging in physical activity. Wear appropriate footwear that provides support. Avoid uneven surfaces. Practice proper techniques when lifting heavy objects.", "z-img/prevent/prevent-sprains.png", []),
     (["sprain treat", "treat sprain", "treatment for sprain", "sprain treatment"], "Rest, ice, compress, and elevate (RICE) the affected area. Take over-the-counter pain medication if needed. Use crutches or a brace if necessary. If the pain or swelling is severe, seek medical help.", "z-img/prevent/treat-sprains.png", []),
     # Fractures
-    (["fracture prevent", "prevent fracture", "prevention for fracture", "fracture prevention"], "Wear appropriate protective gear when engaging in sports or activities that carry a risk of falls or collisions. Practice safety measures when driving or riding vehicles. Ensure your home is free of tripping hazards.", "z-img/prevent/prevent-fracture.png", []),
+    (["fracture preven  t", "prevent fracture", "prevention for fracture", "fracture prevention"], "Wear appropriate protective gear when engaging in sports or activities that carry a risk of falls or collisions. Practice safety measures when driving or riding vehicles. Ensure your home is free of tripping hazards.", "z-img/prevent/prevent-fracture.png", []),
     (["fracture treat", "treat fracture", "treatment for fracture", "fracture treatment"], "Immobilize the affected area to prevent further injury. Apply ice to reduce swelling. Seek medical help immediately. Do not try to realign the bone yourself.", "z-img/prevent/treat-fracture.png", []),
     # Concussions
     (["concussion prevent", "prevent concussion", "prevention for concussion", "concussion prevention"], "Wear helmets during activities such as biking, skating, or playing contact sports. Avoid rough play and take precautions to prevent falls. Practice safe driving habits.", None, ["Ibuprofen (Advil)"]),  #none
@@ -60,10 +78,7 @@ dataset = [
     # Poisoning
     (["poisoning prevent", "prevent poisoning", "prevention for poisoning", "poison prevention"], "Keep household chemicals and medications out of reach of children. Store them in their original containers with child-resistant caps. Never mix household chemicals. Practice food safety measures such as proper handwashing and cooking foods to the appropriate temperature. Refrigerate perishable foods promptly.", "z-img/prevent/prevent-poison.png", ["Cetaminophen", "Warfarin"]),
     (["poisoning treat", "treat poisoning", "treatment for poisoning", "poisoning treatment"], "If ingested, call Poison Control immediately. Follow their instructions. Do not induce vomiting unless instructed to do so. Seek medical help immediately.  ", None, ["Cetaminophen", "Warfarin"]), #none
-    
-    
-    
-    
+
     
     # Animal Bites
     (["animal bite prevent", "prevent animal bite", "prevention for animal bite", "animal bite prevention"], "Avoid approaching or disturbing animals, especially strays or wild animals. Do not provoke animals. Supervise children around animals.", None, ["Antibiotics", "Tetanus Vaccine", "Rabies Vaccine"]),   #none
@@ -190,7 +205,14 @@ dataset = [
     # Acidosis
     (["acidosis prevent", "prevent acidosis", "prevention for acidosis", "acidosis prevention"], "Stay hydrated. Eat a balanced diet with plenty of fruits and vegetables. Avoid excessive alcohol consumption.", "z-img/prevent/prevent-acidosis.png", ["Sodium Citrate"]),
     (["acidosis treat", "treat acidosis", "treatment for acidosis", "acidosis treatment"], "Treat the underlying cause, such as diabetes or kidney disease. Restore the body's acid-base balance with medications or intravenous fluids. Seek medical help immediately.", "z-img/prevent/treat-acidosis.png", ["Sodium Citrate"]),
-
+    
+    
+    
+    
+    
+    
+    
+    
     
     # Alkalosis
     (["alkalosis prevent", "prevent alkalosis", "prevention for alkalosis", "alkalosis prevention"], "Stay hydrated. Avoid excessive vomiting or use of diuretics. Eat a balanced diet.", None, ["Ammonium Chloride"]),   #none
@@ -219,6 +241,9 @@ dataset = [
     # Sinusitis
     (["sinusitis prevent", "prevent sinusitis", "prevention for sinusitis", "sinusitis prevention"], "To prevent sinusitis, maintain good nasal hygiene by using a saline nasal spray or rinse to keep nasal passages clear. Avoiding exposure to allergens and pollutants, and staying hydrated can also help prevent sinusitis.", None, ["Saline nasal spray"]), #none
     (["sinusitis treat", "treat sinusitis", "treatment for sinusitis", "sinusitis treatment"], "Treatment for sinusitis often involves nasal decongestants and saline nasal irrigation to alleviate congestion and promote sinus drainage. In cases of bacterial sinusitis, antibiotics may be prescribed, while over-the-counter pain relievers can help manage discomfort.", "z-img/prevent/treat-sinusitis.png", ["Saline nasal spray"]),
+    
+    
+    
     
     
     # Pneumonia
@@ -251,7 +276,7 @@ dataset = [
     
     
     # SYMPTOMS
-    (["cough", "coughing"], "Stay hydrated, use cough drops or lozenges, try over-the-counter cough medicines such as Solmux or Bactidol, and consider using a humidifier to moisten the air.", "z-img/medicine/bactidol.jpg", ["Bactidol", "Solmux", "Myracof", "Robitussin"]),
+     (["cough", "coughing"], "Stay hydrated, use cough drops or lozenges, try over-the-counter cough medicines such as Solmux or Bactidol, and consider using a humidifier to moisten the air.", "z-img/medicine/bactidol.jpg", ["Bactidol", "Solmux", "Myracof", "Robitussin"]),
     (["nasal congestion", "nasal", "congestion"], "Use saline nasal sprays or rinses, try over-the-counter decongestants such as Sinutab or Decolgen, use a humidifier, and consider taking a hot shower to help relieve congestion.", "z-img/medicine/sinutab.jpg", ["Sinutab", "Decolgen", "Nafarin-A"]),
     (["sore throat", "throat", "sore", "hoarseness", "hoarse"], "Gargle with warm salt water, drink warm liquids such as tea with honey, use throat lozenges such as Strepsils or Cepacol, and consider over-the-counter pain relievers like acetaminophen or ibuprofen.", "z-img/medicine/strepsils.jpg", ["Cepacol", "Diflam Forte", "Strepsils"]),
     (["runny nose", "runny", "drippy"], "Use over-the-counter antihistamines or decongestants such as Neozep, stay hydrated, and consider using a humidifier.", "z-img/medicine/neozep.jpg", ["Neozep", "Sinutab"]),
@@ -312,9 +337,8 @@ dataset = [
     (["neck pain", "neck ache", "pain neck", "ache neck", "neck is aching", "neck feels painful"], "Practice good posture and avoid activities that strain the neck, apply heat or cold packs to the affected area, perform gentle neck stretches and exercises, use a supportive pillow and mattress, consider massage therapy or chiropractic care for relief.", "z-img/medicine/muskelax.png", ["Muskelax"]),
     (["foot pain", "foot ache", "feet ache", "feet pain", "pain foot", "pain feet", "foot", "feet", "feet is aching", "foot is aching", "feet feels painful", "foot feels painful"], "Wear supportive, well-fitted shoes with cushioned insoles, rest and elevate the affected foot, apply ice packs to reduce swelling and inflammation, perform gentle foot stretches and exercises, consider orthotic inserts or custom-made shoes for chronic foot pain.", None, [""]),
     (["hand pain", "hand ache", "hands ache", "hands pain", "hand pain", "pain hand", "pain hands", "hand", "hands", "hands feels painful"], "Rest the affected hand and avoid repetitive movements, apply ice packs to reduce swelling and inflammation, perform gentle hand exercises and stretches, use supportive splints or braces, consider hand therapy or corticosteroid injections for persistent pain.", None, [""]),
-    
-    (["body pain", "body ache", "body is aching", "ache body", "pain body", "body feels painful"], "Apply heat or cold packs to the affected area, rest, use over-the-counter pain relievers like Dolfenal or Ibuprofen, and consider gentle stretching exercises.", "z-img/medicine/dolfenal.jpg", ["Dolfenal", "Ibuprofen"]),
-    (["chest pain", "chest ache", "chest", "pain chest", "ache chest", "chest feels aching", "chest feels painful"], "Seek immediate medical attention, especially if the chest pain is severe, prolonged, or accompanied by other symptoms such as difficulty breathing or pain radiating to the arm or jaw.", None, [""]),
+    (["body pain", "body ache", "body is aching","ache body", "pain body", "body feels painful"], "Apply heat or cold packs to the affected area, rest, use over-the-counter pain relievers like Dolfenal or Ibuprofen, and consider gentle stretching exercises.", "z-img/medicine/dolfenal.jpg", ["Dolfenal", "Ibuprofen"]),
+    (["chest pain", "chest ache","chest", "pain chest", "ache chest", "chest feels aching", "chest feels painful"], "Seek immediate medical attention, especially if the chest pain is severe, prolonged, or accompanied by other symptoms such as difficulty breathing or pain radiating to the arm or jaw.", None, [""]),
     
 ]
 
@@ -344,7 +368,15 @@ def generate_response(message):
     medicine_recommendation = []
 
     # Iterate over the dataset to find the best matching response
-    for keywords, response, img, medicines in dataset:
+    for data in dataset:
+        if len(data) == 4:
+            keywords, response, img, medicines = data
+        elif len(data) == 3:
+            keywords, response, medicines = data
+            img = None
+        else:
+            continue
+
         # Check for exact matches first
         if any(keyword.lower() in message.lower() for keyword in keywords):
             best_response = response
@@ -364,6 +396,7 @@ def generate_response(message):
     medicine_recommendation = [medicine.split('\n') for medicine in medicine_recommendation]
 
     return best_response, best_image, medicine_recommendation
+
 
 
 
@@ -774,6 +807,34 @@ class RequestHandler(BaseHTTPRequestHandler):
             self.send_header('Content-type', 'application/json')
             self.end_headers()
             self.wfile.write(json.dumps(response_data).encode())
+            
+            
+            
+    
+def find_response(user_input):
+    for keywords, response, image, medications in dataset:
+        if any(keyword.lower() in user_input.lower() for keyword in keywords):
+            return response
+    return fallback_response
+
+class MyHandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        user_input = self.path[1:]
+        response_text = find_response(user_input)
+
+        self.send_response(200)
+        self.send_header('Content-type', 'text/html')
+        self.end_headers()
+        self.wfile.write(response_text.encode())
+
+    def log_message(self, format, *args):
+        return
+
+def run(server_class=HTTPServer, handler_class=MyHandler, port=8080):
+    server_address = ('', port)
+    httpd = server_class(server_address, handler_class)
+    print(f'Starting httpd on port {port}...')
+    httpd.serve_forever()
 
 if __name__ == '__main__':
     server_address = ('', 8000)
