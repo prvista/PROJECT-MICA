@@ -289,12 +289,8 @@ function speakBotMessage(message) {
 function handleKeyPress(event) {
   if (event.key === "Enter") {
     sendMessage(); // Submit message on Enter key press
-  } else if (event.key === " ") {
-    // Focus on microphone button on spacebar press
-    var micButton = document.getElementById("mic-button");
-    if (micButton) {
-      micButton.focus();
-    }
+  } else if (event.key === "/") {
+    startSpeechRecognition(); 
   }
 }
 
