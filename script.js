@@ -264,17 +264,71 @@ function speakBotMessage(message) {
   var textOnlyMessage = message.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, '');
 
   var gifElement = document.querySelector(".talking-mica"); // Select the GIF element
-  var speech = new SpeechSynthesisUtterance(textOnlyMessage);
-  
-  speech.onstart = function() {
-    gifElement.style.display = "block"; // Show GIF when TTS starts
-  };
-  
-  speech.onend = function() {
-    gifElement.style.display = "none"; // Hide GIF when TTS ends
-  };
-  
-  speechSynthesis.speak(speech);
+
+  // Function to speak a single chunk
+  function speakChunk(chunk) {
+    return new Promise((resolve, reject) => {
+      var speech = new SpeechSynthesisUtterance(chunk);
+      
+      speech.onstart = function() {
+        gifElement.style.display = "block"; // Show GIF when TTS starts
+      };
+      
+      speech.onend = function() {
+        gifElement.style.display = "none"; // Hide GIF when TTS ends
+        resolve();
+      };
+
+      speech.onerror = function(event) {
+        console.error('Speech synthesis error:', event.error);
+        gifElement.style.display = "none"; // Hide GIF on error
+        reject(event.error);
+      };
+
+      speechSynthesis.speak(speech);
+    });
+  }
+
+  // Function to split the message into chunks
+  function splitMessage(message, maxChunkLength) {
+    var chunks = [];
+    var sentences = message.split(/[.,!?]/).filter(Boolean);
+
+    var currentChunk = "";
+    sentences.forEach((sentence) => {
+      if (currentChunk.length + sentence.length <= maxChunkLength) {
+        currentChunk += (currentChunk ? ". " : "") + sentence;
+      } else {
+        chunks.push(currentChunk);
+        currentChunk = sentence;
+      }
+    });
+    if (currentChunk) {
+      chunks.push(currentChunk);
+    }
+
+    return chunks;
+  }
+
+  // Function to speak all chunks sequentially
+  async function speakMessage(message) {
+    var chunks = splitMessage(message, 200); // Adjust chunk size if necessary
+    for (var chunk of chunks) {
+      try {
+        await speakChunk(chunk);
+      } catch (error) {
+        console.error('Failed to speak chunk:', error);
+      }
+    }
+  }
+
+  // Ensure the speech synthesis queue is empty before starting new speech
+  if (speechSynthesis.speaking) {
+    speechSynthesis.cancel(); // Clear any ongoing speech
+    setTimeout(() => speakMessage(textOnlyMessage), 100); // Start new speech after a short delay
+  } else {
+    speakMessage(textOnlyMessage);
+  }
 }
 
 

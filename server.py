@@ -45,7 +45,6 @@ dataset = [
 
     (["prevent headache", "headache prevent", "prevention for headache", "headache prevention"], "To prevent headaches, ensure you stay hydrated, maintain a healthy diet, get regular exercise, manage stress, and practice good posture. ", "z-img/biogesic.jpg", ["Ibuprofen", "Acetaminophen", "Biogesic"]),
     (["treat headache", "headache treat", "treatment for headache", "headache treatment"], "To treat a headache, you can try over-the-counter pain relievers like ibuprofen or biogesic, rest in a quiet and dark room, apply a cold compress to your forehead, and practice relaxation techniques such as deep breathing or meditation.", "z-img/biogesic.jpg", ["Ibuprofen", "Acetaminophen","Biogesic"]),
-
     (["burns prevent", "prevent burns", "prevention for burns", "burn prevention"], "Always use caution when handling hot objects or liquids. Keep hot objects out of reach of children. Install smoke alarms and have a fire extinguisher at home. Treat minor burns with cool running water and cover with a clean, dry cloth.", "z-img/prevent/prevent-burn.gif", []),
     (["burns treat", "treat burns", "treatment for burns", "burns treatment"], "For minor burns, run cool water over the affected area for at least 20 minutes. Do not apply ice. For severe burns, seek medical help immediately.",  "z-img/prevent/treat-burns.jpg", []),
     # Cuts and Wounds
@@ -111,7 +110,7 @@ dataset = [
     (["heart attack prevent", "prevent heart attack", "prevention for heart attack", "heart attack prevention"], "Maintain a healthy diet and weight. Exercise regularly. Manage stress. Avoid smoking and excessive alcohol consumption.", "z-img/prevent/prevent-heart.png", ["ACE Inhibitors", "Anticoagulants"]),
     (["heart attack treat", "treat heart attack", "treatment for heart attack", "heart attack treatment"], "Call emergency services immediately. Chew aspirin if not allergic. Keep person calm and comfortable until help arrives.", "z-img/prevent/treat-heart.png", ["ACE Inhibitors", "Anticoagulants"]),
     # Stroke
-    (["stroke prevent", "prevent stroke", "prevention for stroke", "stroke prevention"], "Control high blood pressure, cholesterol, and diabetes. Exercise regularly. Maintain a healthy diet. Avoid smoking and excessive alcohol consumption.", "z-img/prevent/prevent-stroke.jpg", ["Emergency IV Medicine"]),
+    (["prevent stroke", "prevention for stroke", "stroke prevention"], "Control high blood pressure, cholesterol, and diabetes. Exercise regularly. Maintain a healthy diet. Avoid smoking and excessive alcohol consumption.", "z-img/prevent/prevent-stroke.jpg", ["Emergency IV Medicine"]),
     (["stroke treat", "treat stroke", "treatment for stroke", "stroke treatment"], "Call emergency services immediately. Note the time when symptoms started. Keep person calm and monitor vital signs until help arrives.", "z-img/prevent/treat-stroke.png", ["Emergency IV medicine"]),
     # Severe Bleeding
     (["severe bleeding prevent", "prevent severe bleeding", "prevention for severe bleeding", "severe bleeding prevention"], "Handle sharp objects with care. Wear protective gloves when necessary. Keep first aid supplies readily available.", "z-img/prevent/prevent-cuts.png", ["Tranexamic Acid (Lysteda)"]),
@@ -209,11 +208,6 @@ dataset = [
     
     
     
-    
-    
-    
-    
-    
     # Alkalosis
     (["alkalosis prevent", "prevent alkalosis", "prevention for alkalosis", "alkalosis prevention"], "Stay hydrated. Avoid excessive vomiting or use of diuretics. Eat a balanced diet.", None, ["Ammonium Chloride"]),   #none
     (["alkalosis treat", "treat alkalosis", "treatment for alkalosis", "alkalosis treatment"], "Treat the underlying cause, such as dehydration or electrolyte imbalances. Restore the body's acid-base balance with medications or intravenous fluids. Seek medical help immediately.", None, ["Ammonium Chloride"]),  #none
@@ -276,7 +270,7 @@ dataset = [
     
     
     # SYMPTOMS
-     (["cough", "coughing"], "Stay hydrated, use cough drops or lozenges, try over-the-counter cough medicines such as Solmux or Bactidol, and consider using a humidifier to moisten the air.", "z-img/medicine/bactidol.jpg", ["Bactidol", "Solmux", "Myracof", "Robitussin"]),
+    (["cough", "coughing"], "Stay hydrated, use cough drops or lozenges, try over-the-counter cough medicines such as Solmux or Bactidol, and consider using a humidifier to moisten the air.", "z-img/medicine/bactidol.jpg", ["Bactidol", "Solmux", "Myracof", "Robitussin"]),
     (["nasal congestion", "nasal", "congestion"], "Use saline nasal sprays or rinses, try over-the-counter decongestants such as Sinutab or Decolgen, use a humidifier, and consider taking a hot shower to help relieve congestion.", "z-img/medicine/sinutab.jpg", ["Sinutab", "Decolgen", "Nafarin-A"]),
     (["sore throat", "throat", "sore", "hoarseness", "hoarse"], "Gargle with warm salt water, drink warm liquids such as tea with honey, use throat lozenges such as Strepsils or Cepacol, and consider over-the-counter pain relievers like acetaminophen or ibuprofen.", "z-img/medicine/strepsils.jpg", ["Cepacol", "Diflam Forte", "Strepsils"]),
     (["runny nose", "runny", "drippy"], "Use over-the-counter antihistamines or decongestants such as Neozep, stay hydrated, and consider using a humidifier.", "z-img/medicine/neozep.jpg", ["Neozep", "Sinutab"]),
@@ -340,6 +334,12 @@ dataset = [
     (["body pain", "body ache", "body is aching","ache body", "pain body", "body feels painful"], "Apply heat or cold packs to the affected area, rest, use over-the-counter pain relievers like Dolfenal or Ibuprofen, and consider gentle stretching exercises.", "z-img/medicine/dolfenal.jpg", ["Dolfenal", "Ibuprofen"]),
     (["chest pain", "chest ache","chest", "pain chest", "ache chest", "chest feels aching", "chest feels painful"], "Seek immediate medical attention, especially if the chest pain is severe, prolonged, or accompanied by other symptoms such as difficulty breathing or pain radiating to the arm or jaw.", None, [""]),
     
+    
+    
+    
+    (["explain Lyme disease","explanation Lyme disease", "what is Lyme disease", "Lyme disease explanation"], "An infectious disease caused by the bacterium Borrelia, transmitted by tick bites, causing fever, headache, fatigue, and a characteristic skin rash.", None, []),
+    (["Who is the most beautiful prof?","Who is the best prof?", "Gorgeous", "Pretty", "beautiful"], "Ofcourse, all of your professor😉", None, []),
+    (["What grade we'll get?","What will be our grade?", "What grade we'll receive?", "What is our grade", "Grade"], "You deserve to have 95 above🤗", "z-img/prevent/trophy.png", ["🏆👏"]),
 ]
 
 
@@ -376,7 +376,7 @@ def generate_response(message):
             img = None
         else:
             continue
-
+            
         # Check for exact matches first
         if any(keyword.lower() in message.lower() for keyword in keywords):
             best_response = response
@@ -419,7 +419,7 @@ symptom_dataset = [
             }
         ]
     },
-    {   
+    {
         "symptoms": ["sore throat", "throat pain"],
         "conditions": [
             {
@@ -438,8 +438,462 @@ symptom_dataset = [
                 "medications": ["Over-the-counter cold medication"]
             }
         ]
+    },
+    {
+        "symptoms": ["headache", "head pain"],
+        "conditions": [
+            {
+                "condition": "Headache",
+                "recommendation": "It seems like you might have a headache. Rest in a quiet, dark room and consider taking pain relief medication.",
+                "medications": ["Paracetamol", "Ibuprofen"]
+            }
+        ]
+    },
+    {
+        "symptoms": ["cough", "chest congestion"],
+        "conditions": [
+            {
+                "condition": "Bronchitis",
+                "recommendation": "You may have bronchitis. Consider taking cough suppressants, drinking plenty of fluids, and using a humidifier.",
+                "medications": ["Cough suppressants", "Antibiotics (if bacterial infection)"]
+            }
+        ]
+    },
+    {
+        "symptoms": ["shortness of breath", "difficulty breathing"],
+        "conditions": [
+            {
+                "condition": "Asthma",
+                "recommendation": "It seems like you might be experiencing asthma symptoms. Use your inhaler as prescribed and seek medical attention if symptoms worsen.",
+                "medications": ["Inhaler (bronchodilator)", "Steroids"]
+            }
+        ]
+    },
+    {
+        "symptoms": ["fatigue", "weakness"],
+        "conditions": [
+            {
+                "condition": "Anemia",
+                "recommendation": "You may be experiencing symptoms of anemia. Increase your iron intake through diet or supplements, and get plenty of rest.",
+                "medications": ["Iron supplements", "Vitamin B12 supplements"]
+            }
+        ]
+    },
+    {
+        "symptoms": ["stomach pain", "abdominal discomfort"],
+        "conditions": [
+            {
+                "condition": "Gastritis",
+                "recommendation": "It seems like you might have gastritis. Avoid spicy or acidic foods, eat smaller meals, and consider over-the-counter antacids.",
+                "medications": ["Antacids", "Proton pump inhibitors"]
+            }
+        ]
+    },
+    {
+        "symptoms": ["vomiting", "nausea"],
+        "conditions": [
+            {
+                "condition": "Gastroenteritis",
+                "recommendation": "Based on your symptoms, you may have gastroenteritis. Stay hydrated with clear fluids and avoid solid foods until symptoms subside.",
+                "medications": ["Antiemetics", "Electrolyte solutions"]
+            }
+        ]
+    },
+    {
+        "symptoms": ["diarrhea", "loose stools"],
+        "conditions": [
+            {
+                "condition": "Diarrhea",
+                "recommendation": "It seems like you might have diarrhea. Drink plenty of fluids to stay hydrated and consider over-the-counter medications to manage symptoms.",
+                "medications": ["Antidiarrheal medication", "Oral rehydration salts"]
+            }
+        ]
+    },
+    {
+        "symptoms": ["joint pain", "swelling"],
+        "conditions": [
+            {
+                "condition": "Arthritis",
+                "recommendation": "You may be experiencing symptoms of arthritis. Apply ice packs, rest the affected joint, and consider over-the-counter pain relievers.",
+                "medications": ["Nonsteroidal anti-inflammatory drugs (NSAIDs)", "Corticosteroids"]
+            }
+        ]
+    },
+    {
+        "symptoms": ["rash", "itchy skin"],
+        "conditions": [
+            {
+                "condition": "Allergic Reaction",
+                "recommendation": "Based on your symptoms, you may be having an allergic reaction. Avoid allergens if known, take antihistamines, and apply soothing lotions.",
+                "medications": ["Antihistamines", "Topical corticosteroids"]
+            }
+        ]
+    },
+    {
+        "symptoms": ["back pain", "lower back pain"],
+        "conditions": [
+            {
+                "condition": "Muscle Strain",
+                "recommendation": "It seems like you might have strained your back muscles. Apply ice packs, rest, and consider over-the-counter pain relievers.",
+                "medications": ["Acetaminophen", "Nonsteroidal anti-inflammatory drugs (NSAIDs)"]
+            }
+        ]
+    },
+    {
+        "symptoms": ["dizziness", "lightheadedness"],
+        "conditions": [
+            {
+                "condition": "Vertigo",
+                "recommendation": "Based on your symptoms, you may be experiencing vertigo. Avoid sudden movements, rest, and consult a healthcare professional.",
+                "medications": ["Antihistamines", "Anti-nausea medications"]
+            }
+        ]
+    },
+    {
+        "symptoms": ["difficulty swallowing", "painful swallowing"],
+        "conditions": [
+            {
+                "condition": "Esophagitis",
+                "recommendation": "You may have esophagitis. Avoid spicy or acidic foods, eat smaller meals, and consider over-the-counter antacids.",
+                "medications": ["Antacids", "Proton pump inhibitors"]
+            }
+        ]
+    },
+    {
+        "symptoms": ["frequent urination", "painful urination"],
+        "conditions": [
+            {
+                "condition": "Urinary Tract Infection (UTI)",
+                "recommendation": "It seems like you might have a urinary tract infection (UTI). Drink plenty of fluids, avoid irritants, and consider over-the-counter pain relievers.",
+                "medications": ["Antibiotics", "Urinary analgesics"]
+            }
+        ]
+    },
+    {
+        "symptoms": ["irregular heartbeat", "heart palpitations"],
+        "conditions": [
+            {
+                "condition": "Arrhythmia",
+                "recommendation": "You may be experiencing symptoms of arrhythmia. Avoid stimulants, get plenty of rest, and consult a healthcare professional for further evaluation.",
+                "medications": ["Beta-blockers", "Calcium channel blockers"]
+            }
+        ]
+    },
+    {
+        "symptoms": ["chest pain", "pressure in chest"],
+        "conditions": [
+            {
+                "condition": "Heart Attack",
+                "recommendation": "Based on your symptoms, you may be experiencing a heart attack. Call emergency services immediately and seek medical attention.",
+                "medications": ["Aspirin", "Nitroglycerin"]
+            }
+        ]
+    },
+    {
+        "symptoms": ["blood in stool", "rectal bleeding"],
+        "conditions": [
+            {
+                "condition": "Hemorrhoids",
+                "recommendation": "It seems like you might have hemorrhoids. Increase fiber intake, drink plenty of fluids, and consider over-the-counter hemorrhoid creams.",
+                "medications": ["Hemorrhoid creams", "Stool softeners"]
+            }
+        ]
+    },
+    {
+        "symptoms": ["muscle weakness", "fatigue"],
+        "conditions": [
+            {
+                "condition": "Muscle Weakness",
+                "recommendation": "You may be experiencing muscle weakness. Ensure adequate nutrition, rest, and consider physical therapy.",
+                "medications": ["Vitamin supplements", "Calcium supplements"]
+            }
+        ]
+    },
+    {
+        "symptoms": ["swollen lymph nodes", "tender lymph nodes"],
+        "conditions": [
+            {
+                "condition": "Lymphadenitis",
+                "recommendation": "Based on your symptoms, you may have lymphadenitis. Apply warm compresses, take over-the-counter pain relievers, and see a doctor if symptoms persist.",
+                "medications": ["Pain relievers", "Antibiotics"]
+            }
+        ]
+    },
+    {
+        "symptoms": ["memory loss", "confusion"],
+        "conditions": [
+            {
+                "condition": "Dementia",
+                "recommendation": "It seems like you might be experiencing symptoms of dementia. Consult a healthcare professional for evaluation and management.",
+                "medications": ["Cholinesterase inhibitors", "Memantine"]
+            }
+        ]
+    },
+    {
+        "symptoms": ["seizures", "convulsions"],
+        "conditions": [
+            {
+                "condition": "Epilepsy",
+                "recommendation": "You may be experiencing seizures due to epilepsy. Follow your prescribed seizure management plan and seek medical advice.",
+                "medications": ["Antiepileptic drugs", "Benzodiazepines"]
+            }
+        ]
+    },
+    {
+        "symptoms": ["vision changes", "blurred vision"],
+        "conditions": [
+            {
+                "condition": "Vision Impairment",
+                "recommendation": "It seems like you might have vision impairment. Schedule an eye examination with an optometrist or ophthalmologist for evaluation.",
+                "medications": ["Eyeglasses", "Contact lenses"]
+            }
+        ]
+    },
+    {
+        "symptoms": ["hair loss", "bald patches"],
+        "conditions": [
+            {
+                "condition": "Alopecia",
+                "recommendation": "Based on your symptoms, you may have alopecia. Consult a dermatologist for evaluation and management options.",
+                "medications": ["Minoxidil", "Corticosteroid injections"]
+            }
+        ]
+    },
+    {
+        "symptoms": ["unexplained weight loss", "loss of appetite"],
+        "conditions": [
+            {
+                "condition": "Malnutrition",
+                "recommendation": "It seems like you might be experiencing malnutrition. Ensure a balanced diet with adequate calorie intake and consider nutritional supplements.",
+                "medications": ["Multivitamins", "Nutritional supplements"]
+            }
+        ]
+    },
+    {
+        "symptoms": ["excessive thirst", "frequent urination"],
+        "conditions": [
+            {
+                "condition": "Diabetes",
+                "recommendation": "You may have diabetes. Monitor blood sugar levels, follow a diabetic diet, and consult a healthcare professional for management.",
+                "medications": ["Insulin", "Oral antidiabetic drugs"]
+            }
+        ]
+    },
+    {
+        "symptoms": ["mood swings", "irritability"],
+        "conditions": [
+            {
+                "condition": "Mood Disorders",
+                "recommendation": "Based on your symptoms, you may have a mood disorder. Seek counseling or psychiatric evaluation for diagnosis and management.",
+                "medications": ["Antidepressants", "Mood stabilizers"]
+            }
+        ]
+    },
+    {
+        "symptoms": ["frequent headaches", "migraine attacks"],
+        "conditions": [
+            {
+                "condition": "Migraine",
+                "recommendation": "It seems like you might be experiencing migraines. Identify triggers, manage stress, and consider preventive medications.",
+                "medications": ["Triptans", "Beta-blockers"]
+            }
+        ]
+    },
+    {
+        "symptoms": ["excessive sweating", "night sweats"],
+        "conditions": [
+            {
+                "condition": "Hyperhidrosis",
+                "recommendation": "You may have hyperhidrosis. Use antiperspirants, wear breathable clothing, and consult a dermatologist for treatment options.",
+                "medications": ["Antiperspirants", "Iontophoresis"]
+            }
+        ]
+    },
+    {
+        "symptoms": ["excessive hunger", "weight gain"],
+        "conditions": [
+            {
+                "condition": "Hypothyroidism",
+                "recommendation": "Based on your symptoms, you may have hypothyroidism. Get thyroid function tests done and consult an endocrinologist for management.",
+                "medications": ["Levothyroxine", "Liothyronine"]
+            }
+        ]
+    },
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+     {
+        "symptoms": ["severe abdominal pain", "bloody stool"],
+        "conditions": [
+            {
+                "condition": "Crohn's Disease",
+                "recommendation": "It seems like you might have Crohn's disease. Follow a low-fiber diet, take anti-inflammatory medications, and consult a gastroenterologist for management.",
+                "medications": ["Corticosteroids", "Immunomodulators"]
+            }
+        ]
+    },
+    {
+        "symptoms": ["excessive thirst", "frequent urination"],
+        "conditions": [
+            {
+                "condition": "Diabetes Mellitus",
+                "recommendation": "Based on your symptoms, you may have diabetes mellitus. Monitor blood sugar levels, follow a balanced diet, and take insulin or oral medications as prescribed.",
+                "medications": ["Insulin", "Metformin"]
+            }
+        ]
+    },
+    {
+        "symptoms": ["sudden chest pain", "shortness of breath"],
+        "conditions": [
+            {
+                "condition": "Myocardial Infarction (Heart Attack)",
+                "recommendation": "It seems like you might be experiencing a heart attack. Call emergency services immediately, chew aspirin if available, and wait for medical assistance.",
+                "medications": ["Aspirin", "Thrombolytics"]
+            }
+        ]
+    },
+    {
+        "symptoms": ["difficulty speaking", "facial drooping"],
+        "conditions": [
+            {
+                "condition": "Stroke",
+                "recommendation": "Based on your symptoms, you may be having a stroke. Call emergency services immediately and note the time of symptom onset for timely treatment.",
+                "medications": ["Tissue plasminogen activator (tPA)", "Antiplatelet drugs"]
+            }
+        ]
+    },
+    {
+        "symptoms": ["swelling in legs", "shortness of breath"],
+        "conditions": [
+            {
+                "condition": "Pulmonary Embolism",
+                "recommendation": "It seems like you might have a pulmonary embolism. Seek immediate medical attention, keep calm, and avoid physical exertion.",
+                "medications": ["Anticoagulants", "Thrombolytics"]
+            }
+        ]
+    },
+    {
+        "symptoms": ["confusion", "hallucinations"],
+        "conditions": [
+            {
+                "condition": "Delirium",
+                "recommendation": "Based on your symptoms, you may have delirium. Ensure a calm environment, address underlying causes, and seek medical evaluation.",
+                "medications": ["Antipsychotics", "Sedatives"]
+            }
+        ]
+    },
+    {
+        "symptoms": ["painful urination", "lower abdominal pain"],
+        "conditions": [
+            {
+                "condition": "Bladder Infection",
+                "recommendation": "It seems like you might have a bladder infection. Drink plenty of water, use antibiotics as prescribed, and avoid irritants like caffeine.",
+                "medications": ["Antibiotics", "Urinary analgesics"]
+            }
+        ]
+    },
+    {
+        "symptoms": ["weight loss", "fatigue"],
+        "conditions": [
+            {
+                "condition": "Hyperthyroidism",
+                "recommendation": "You may have hyperthyroidism. Follow up with an endocrinologist, take antithyroid medications, and consider radioactive iodine therapy or surgery.",
+                "medications": ["Antithyroid medications", "Beta blockers"]
+            }
+        ]
+    },
+    {
+        "symptoms": ["difficulty sleeping", "daytime sleepiness"],
+        "conditions": [
+            {
+                "condition": "Sleep Apnea",
+                "recommendation": "Based on your symptoms, you may have sleep apnea. Use a CPAP machine, maintain a healthy weight, and avoid alcohol and sedatives.",
+                "medications": ["Continuous positive airway pressure (CPAP)", "Oral appliances"]
+            }
+        ]
+    },
+    {
+        "symptoms": ["blood in urine", "pain in the side or back"],
+        "conditions": [
+            {
+                "condition": "Kidney Stones",
+                "recommendation": "It seems like you might have kidney stones. Stay hydrated, manage pain with NSAIDs, and consult a urologist for further evaluation and treatment.",
+                "medications": ["NSAIDs", "Alpha blockers"]
+            }
+        ]
+    },
+    {
+        "symptoms": ["persistent cough", "chest pain"],
+        "conditions": [
+            {
+                "condition": "Pneumonia",
+                "recommendation": "Based on your symptoms, you may have pneumonia. Rest, stay hydrated, and use antibiotics as prescribed by a healthcare provider.",
+                "medications": ["Antibiotics", "Antipyretics"]
+            }
+        ]
+    },
+    {
+        "symptoms": ["mood swings", "loss of interest"],
+        "conditions": [
+            {
+                "condition": "Depression",
+                "recommendation": "It seems like you might have depression. Seek therapy, consider antidepressant medications, and maintain a support network.",
+                "medications": ["Selective serotonin reuptake inhibitors (SSRIs)", "Serotonin-norepinephrine reuptake inhibitors (SNRIs)"]
+            }
+        ]
+    },
+    {
+        "symptoms": ["difficulty swallowing", "unexplained weight loss"],
+        "conditions": [
+            {
+                "condition": "Esophageal Cancer",
+                "recommendation": "You may have esophageal cancer. Consult an oncologist for diagnosis and treatment options, which may include surgery, chemotherapy, and radiation therapy.",
+                "medications": ["Chemotherapy", "Targeted therapy"]
+            }
+        ]
+    },
+    {
+        "symptoms": ["pain in the lower abdomen", "irregular menstruation"],
+        "conditions": [
+            {
+                "condition": "Polycystic Ovary Syndrome (PCOS)",
+                "recommendation": "Based on your symptoms, you may have PCOS. Manage symptoms with lifestyle changes, hormonal contraceptives, and metformin.",
+                "medications": ["Oral contraceptives", "Metformin"]
+            }
+        ]
+    },
+    {
+        "symptoms": ["memory loss", "difficulty finding words"],
+        "conditions": [
+            {
+                "condition": "Alzheimer's Disease",
+                "recommendation": "It seems like you might have Alzheimer's disease. Consult a neurologist for evaluation, consider cognitive enhancers, and plan for long-term care.",
+                "medications": ["Cholinesterase inhibitors", "Memantine"]
+            }
+        ]
     }
+    
 ]
+
+
+
 
 symptom_checking_details = {}
 
